@@ -105,7 +105,7 @@ export function Footer() {
                 </li>
               </ul>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         <div className="mt-14 flex flex-col items-center justify-center gap-2 border-t border-border pt-10 text-center sm:mt-16 sm:pt-12">
