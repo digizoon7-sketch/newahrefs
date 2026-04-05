@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+/* Warm stone canvas + orange CTA + teal accent (no indigo / no cold SaaS purple) */
+@theme {
+  --color-background: #fafaf9;
+  --color-surface: #f5f5f4;
+  --color-secondary: #f5f5f4;
+  --color-border: #e7e5e4;
+  --color-primary: #ea580c;
+  --color-accent: #0f766e;
+  --color-text: #1c1917;
+  --color-muted: #78716c;
+  --color-primary-foreground: #ffffff;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-text font-sans antialiased selection:bg-accent/15 selection:text-text;
+  }
+}
+
+@layer utilities {
+  .solid-card {
+    @apply bg-surface border border-border;
+  }
+  
+  .glow-accent {
+    @apply relative;
+  }
+  
+  .glow-accent::after {
+    content: "";
+    @apply absolute inset-0 -z-10 blur-3xl opacity-10 bg-primary;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
