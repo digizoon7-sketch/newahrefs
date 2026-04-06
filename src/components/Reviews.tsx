@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import { springSoft } from "@/lib/motion";
 import { Star, ShieldCheck } from "lucide-react";
 
-const reviews = [
+export const REVIEW_ITEMS = [
   {
     name: "Mark Thompson",
     role: "Agency Owner",
@@ -59,7 +59,7 @@ export function Reviews() {
 
         {/* Compact cards — one row on xl */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          {reviews.map((review, i) => (
+          {REVIEW_ITEMS.map((review, i) => (
             <motion.article
               key={review.name}
               initial={{ opacity: 0, y: 16 }}

@@ -31,21 +31,21 @@ export function SocialProof() {
           initial={{ opacity: 0, x: -50, y: 50 }}
           animate={{ opacity: 1, x: 0, y: 0 }}
           exit={{ opacity: 0, x: -50, y: 50 }}
-          className="fixed bottom-6 left-6 z-[100] bg-surface border border-border p-4 rounded-sm shadow-2xl flex items-center gap-4 max-w-xs"
+          className="fixed bottom-6 left-6 z-[100] flex max-w-xs items-center gap-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-2xl"
         >
-          <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center shrink-0">
-            <ShoppingCart className="w-6 h-6 text-primary" />
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-600/15">
+            <ShoppingCart className="h-6 w-6 text-blue-600" />
           </div>
           <div className="space-y-1">
-            <p className="text-xs font-bold text-text">
+            <p className="text-xs font-bold text-[#1A284D]">
               {notifications[current].name}
             </p>
-            <p className="text-[10px] leading-tight text-muted">
+            <p className="text-[10px] leading-tight text-slate-600">
               {notifications[current].action}
             </p>
             <div className="flex items-center gap-2">
-              <span className="text-[9px] text-primary font-bold uppercase tracking-widest">Verified Purchase</span>
-              <span className="text-[9px] text-muted">• {notifications[current].time}</span>
+              <span className="text-[9px] font-bold uppercase tracking-widest text-blue-600">Verified Purchase</span>
+              <span className="text-[9px] text-slate-500">• {notifications[current].time}</span>
             </div>
           </div>
         </motion.div>

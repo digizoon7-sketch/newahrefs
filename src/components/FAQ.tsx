@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence, LayoutGroup } from "motion/react";
 import { Plus, Minus, HelpCircle } from "lucide-react";
 
-const faqs = [
+export const FAQ_ITEMS = [
   {
     question: "Is this the real Ahrefs data?",
     answer: "Yes, 100%. You are accessing real Ahrefs accounts through our secure dashboard. The data, metrics, and features are exactly what you get with an official subscription.",
@@ -66,7 +66,7 @@ export function FAQ() {
 
         <LayoutGroup>
         <div className="space-y-4">
-          {faqs.map((faq, i) => (
+          {FAQ_ITEMS.map((faq, i) => (
             <motion.div
               key={i}
               layout
