@@ -71,6 +71,11 @@ export function Footer() {
                       Risks
                     </Link>
                   </li>
+                  <li>
+                    <Link className="transition-colors hover:text-white" to="/privacy">
+                      Privacy Policy
+                    </Link>
+                  </li>
                 </ul>
               </div>
 
@@ -80,7 +85,7 @@ export function Footer() {
                   Need help? Our team is available 24/7.
                 </p>
                 <a
-                  href="https://wa.me/"
+                  href={SITE_CONFIG.whatsappUrl}
                   target="_blank"
                   rel="noreferrer"
                   className="mt-5 inline-flex items-center gap-2 rounded-2xl bg-white px-5 py-3 text-xs font-black uppercase tracking-widest text-[#1A284D] shadow-xl transition-transform hover:-translate-y-0.5"

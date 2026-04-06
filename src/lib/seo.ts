@@ -1,4 +1,6 @@
-import { SITE_CONFIG, type PageData } from "@/config/site";
+import { SITE_CONFIG, type PageData, type SiteContentAuthor } from "@/config/site";
+import { getArticleDatesForSlug } from "@/lib/articleDates";
+import { getContentAuthorForSlug } from "@/lib/contentAuthorPick";
 
 function stripTrailingSlash(url: string) {
   return url.endsWith("/") ? url.slice(0, -1) : url;
@@ -63,18 +65,46 @@ export function jsonLdBreadcrumbs(page: PageData) {
   };
 }
 
+function jsonLdContentAuthorPerson(a: SiteContentAuthor) {
+  const home = canonicalHome();
+  const person: Record<string, unknown> = {
+    "@type": "Person",
+    name: a.name,
+    url: a.url || home,
+  };
+  if (a.jobTitle) person.jobTitle = a.jobTitle;
+  if (a.image) person.image = a.image;
+  if (a.sameAs?.length) person.sameAs = a.sameAs;
+  person.worksFor = {
+    "@type": "Organization",
+    name: SITE_CONFIG.name,
+    url: home,
+  };
+  return person;
+}
+
 export function jsonLdWebPage(page: PageData) {
   const pageUrl = canonicalForSlug(page.slug);
+  const home = canonicalHome();
+  const { datePublished, dateModified } = getArticleDatesForSlug(page.slug);
+  const author = getContentAuthorForSlug(page.slug);
   return {
     "@context": "https://schema.org",
     "@type": page.isPillar ? "WebPage" : "Article",
     headline: page.title,
     description: page.metaDescription ?? page.description,
     url: pageUrl,
+    datePublished,
+    dateModified,
+    author: jsonLdContentAuthorPerson(author),
     publisher: {
       "@type": "Organization",
       name: SITE_CONFIG.name,
-      url: canonicalHome(),
+      url: home,
+      logo: {
+        "@type": "ImageObject",
+        url: SITE_CONFIG.ogImage,
+      },
     },
     inLanguage: "en",
   };

@@ -1,7 +1,10 @@
+import { useRef } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { PAGES, SITE_CONFIG } from "@/config/site";
 import { BookOpen, Star, ShieldCheck, Zap, ArrowRight } from "lucide-react";
 import { Helmet } from "react-helmet-async";
+import { getArticleDatesForSlug } from "@/lib/articleDates";
+import { getContentAuthorForSlug } from "@/lib/contentAuthorPick";
 import { canonicalForSlug, jsonLdBreadcrumbs, jsonLdOrganization, jsonLdWebPage, jsonLdWebsite } from "@/lib/seo";
 import { AhrefsGroupBuyGuideArticle } from "@/content/AhrefsGroupBuyGuideArticle";
 import { AhrefsGroupBuyRisksArticle } from "@/content/AhrefsGroupBuyRisksArticle";
@@ -37,10 +40,13 @@ import { BestSeoToolAlternativesArticle } from "@/content/BestSeoToolAlternative
 import { GroupBuyVsAhrefsStarterArticle } from "@/content/GroupBuyVsAhrefsStarterArticle";
 import { GroupBuyVsOfficialAhrefsArticle } from "@/content/GroupBuyVsOfficialAhrefsArticle";
 import { IsAhrefsStarterBetterArticle } from "@/content/IsAhrefsStarterBetterArticle";
+import { TableOfContents } from "@/components/TableOfContents";
+import { ArticleAuthorBox } from "@/components/ArticleAuthorBox";
 
 export function DynamicPage() {
   const { slug } = useParams<{ slug: string }>();
   const page = slug ? PAGES[slug] : null;
+  const articleBodyRef = useRef<HTMLDivElement>(null);
 
   if (!page) {
     return <Navigate to="/" replace />;
@@ -60,6 +66,8 @@ export function DynamicPage() {
 
   const supportingPages = Object.values(PAGES).filter((p) => p.parentSlug === page.slug);
 
+  const articleDates = getArticleDatesForSlug(page.slug);
+  const pageAuthor = getContentAuthorForSlug(page.slug);
   const ldOrg = jsonLdOrganization();
   const ldSite = jsonLdWebsite();
   const ldCrumbs = jsonLdBreadcrumbs(page);
@@ -103,6 +111,10 @@ export function DynamicPage() {
         <meta property="og:locale" content="en_US" />
         <meta property="og:image" content={ogImage} />
         <meta property="og:image:alt" content={page.title} />
+        <meta name="author" content={pageAuthor.name} />
+        <meta property="article:author" content={pageAuthor.url} />
+        <meta property="article:published_time" content={`${articleDates.datePublished}T12:00:00.000Z`} />
+        <meta property="article:modified_time" content={`${articleDates.dateModified}T12:00:00.000Z`} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={page.metaTitle ?? page.title} />
         <meta name="twitter:description" content={page.metaDescription ?? page.description} />
@@ -133,6 +145,7 @@ export function DynamicPage() {
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-14">
           <article className="space-y-12 lg:col-span-7 xl:col-span-8">
+            <div ref={articleBodyRef}>
             {page.slug === "ahrefs-group-buy-guide" ? (
               <AhrefsGroupBuyGuideArticle />
             ) : page.slug === "ahrefs-group-buy-risks" ? (
@@ -269,6 +282,13 @@ export function DynamicPage() {
                 </div>
               </div>
             )}
+            </div>
+
+            <ArticleAuthorBox
+              author={pageAuthor}
+              datePublished={articleDates.datePublished}
+              dateModified={articleDates.dateModified}
+            />
 
             {supportingPages.length > 0 && (
               <section className="space-y-8">
@@ -293,7 +313,10 @@ export function DynamicPage() {
             )}
           </article>
 
-          <aside className="lg:col-span-5 xl:col-span-4">{ctaCard}</aside>
+          <aside className="space-y-6 lg:col-span-5 xl:col-span-4">
+            <TableOfContents containerRef={articleBodyRef} routeKey={page.slug} />
+            {ctaCard}
+          </aside>
         </div>
       </div>
     </div>

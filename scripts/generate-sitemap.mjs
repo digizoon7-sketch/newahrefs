@@ -29,6 +29,9 @@ for (const block of siteSource.matchAll(/supporting:\s*\[([\s\S]*?)\]/g)) {
   }
 }
 
+/** Routes not listed in SITE_CONFIG clusters (legal, static pages). */
+const EXTRA_SLUGS = ["privacy"];
+
 const today = new Date().toISOString().slice(0, 10);
 
 function urlEntry(loc, { priority = "0.7", changefreq = "weekly" } = {}) {
@@ -37,6 +40,10 @@ function urlEntry(loc, { priority = "0.7", changefreq = "weekly" } = {}) {
 
 const urls = [];
 urls.push(urlEntry(`${baseUrl}/`, { priority: "1.0", changefreq: "daily" }));
+
+for (const slug of EXTRA_SLUGS) {
+  slugs.add(slug);
+}
 
 // Sort slugs for stable diffs
 const sorted = Array.from(slugs).sort();

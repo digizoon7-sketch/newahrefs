@@ -205,12 +205,51 @@ const BEST_CHEAP_AHREFS_OPTIONS_META_TITLE =
 const BEST_CHEAP_AHREFS_OPTIONS_META_DESCRIPTION =
   "Explore the best cheap Ahrefs group buy options, what users expect from low-cost shared access, the common risks, feature limits, and smarter ways to compare budget SEO tool choices.";
 
+/** Editorial byline for guide pages, UI box, and JSON-LD `Person` / Article author. Replace with a real name and image URL when you publish under a specific person. */
+export type SiteContentAuthor = {
+  name: string;
+  jobTitle: string;
+  bio: string;
+  /** Canonical URL for the author (site home or a dedicated profile URL). */
+  url: string;
+  /** Optional headshot URL (absolute). */
+  image?: string;
+  /** SameAs profiles ( Wikipedia, LinkedIn, etc. ). */
+  sameAs?: string[];
+};
+
 export const SITE_CONFIG = {
   name: "AhrefsGroupBuy",
   url: "https://ahrefsgroupbuy.com",
   description: "Premium Ahrefs Group Buy Access for SEO Professionals.",
   /** Default social share image (absolute URL). */
   ogImage: "https://ahrefsgroupbuy.com/og.svg",
+  /** WhatsApp chat link (country code + number, no + or spaces), e.g. https://wa.me/923001234567 */
+  whatsappUrl: "https://wa.me/",
+  /** Guide pages pick one author per slug (stable hash) for byline + JSON-LD. */
+  contentAuthors: [
+    {
+      name: "Waheed Ahmad",
+      jobTitle: "Content editor & SEO researcher",
+      bio: "Waheed researches and writes guides on Ahrefs group buy access, pricing, risks, and alternatives so readers can compare options with clear, practical context.",
+      url: "https://ahrefsgroupbuy.com/",
+      sameAs: [] as string[],
+    },
+    {
+      name: "Saeed Fadi",
+      jobTitle: "Content editor & SEO researcher",
+      bio: "Saeed covers Ahrefs group buy topics, tool comparisons, and SEO workflows for readers who want straightforward guidance without hype.",
+      url: "https://ahrefsgroupbuy.com/",
+      sameAs: [] as string[],
+    },
+    {
+      name: "Bilal Ahmad",
+      jobTitle: "Content editor & SEO researcher",
+      bio: "Bilal researches and writes guides on Ahrefs group buy access, pricing, risks, and alternatives so readers can compare options with clear, practical context.",
+      url: "https://ahrefsgroupbuy.com/",
+      sameAs: [] as string[],
+    },
+  ] satisfies SiteContentAuthor[],
   clusters: [
     {
       name: "Main",
