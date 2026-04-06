@@ -139,13 +139,13 @@ function TopHero() {
             <div className="flex flex-col items-center gap-8">
               <div className="flex items-center gap-4 rounded-[2rem] border border-white/10 bg-white/5 px-8 py-5 backdrop-blur-md">
                 <div className="flex -space-x-3">
-                  {[1, 2, 3, 4, 5].map((i) => (
+                  {["a1", "a2", "a3", "a4", "a5"].map((id) => (
                     <div
-                      key={i}
+                      key={id}
                       className="h-10 w-10 overflow-hidden rounded-full border-2 border-[#1A284D] bg-gray-200 shadow-lg"
                     >
                       <img
-                        src={`https://i.pravatar.cc/100?img=${i + 20}`}
+                        src={`/avatars/${id}.svg`}
                         alt=""
                         referrerPolicy="no-referrer"
                       />
@@ -257,6 +257,17 @@ function RefPricing() {
               Choose the perfect plan for your SEO needs. From individual bloggers to large agencies, we&apos;ve got
               you covered.
             </p>
+            <div className="mb-10 flex justify-center">
+              <motion.button
+                type="button"
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setIsModalOpen(true)}
+                className="group inline-flex items-center gap-2 text-sm font-black text-[#1A284D] transition-colors hover:text-[#FF5C00]"
+              >
+                Compare all features in detail
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </motion.button>
+            </div>
 
             <div className="mb-12 flex flex-wrap items-center justify-center gap-4">
               <div className="flex rounded-xl border border-slate-200 bg-white p-1 shadow-sm">
@@ -440,7 +451,7 @@ function RefPricing() {
             onClick={() => setIsModalOpen(true)}
             className="group inline-flex items-center gap-2 text-sm font-black text-[#1A284D] transition-colors hover:text-[#FF5C00]"
           >
-            Compare all features in detail
+            Open detailed comparison table
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </motion.button>
         </div>
@@ -662,7 +673,7 @@ function WhyChooseShared() {
   );
 }
 
-function ToolsIncluded() {
+function ToolsIncluded({ onOpenTools }: { onOpenTools: () => void }) {
   return (
     <section className="relative overflow-hidden bg-white py-32" id="tools">
       <div className="relative z-10 mx-auto max-w-7xl px-6">
@@ -672,7 +683,7 @@ function ToolsIncluded() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewOnce}
         >
-          <h2 className="mb-6 text-5xl font-black tracking-tight text-[#1A284D] md:text-7xl">20+ Premium Tools Included</h2>
+          <h2 className="mb-6 text-5xl font-black tracking-tight text-[#1A284D] md:text-7xl">20+ Premium SEO Tools</h2>
           <p className="mx-auto max-w-2xl text-xl font-medium text-gray-500">
             Everything you need for SEO, Content, and Design in one place.
           </p>
@@ -703,8 +714,93 @@ function ToolsIncluded() {
             </motion.div>
           ))}
         </div>
+        <div className="mt-14 flex justify-center">
+          <motion.button
+            type="button"
+            whileTap={{ scale: 0.97 }}
+            onClick={onOpenTools}
+            className="inline-flex items-center gap-3 rounded-2xl bg-[#1A284D] px-10 py-5 text-sm font-black uppercase tracking-widest text-white shadow-xl shadow-slate-200 transition-colors hover:bg-[#15203d]"
+          >
+            View all 25+ tools <ArrowRight className="h-5 w-5" />
+          </motion.button>
+        </div>
       </div>
     </section>
+  );
+}
+
+function ToolsModal({
+  isOpen,
+  onClose,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+}) {
+  const [query, setQuery] = useState("");
+  const planTools = (MARKETING_PLANS.find((p) => p.id === "power")?.tools ?? []) as string[];
+  const allTools = Array.from(new Set(["Ahrefs", ...planTools]));
+  const filtered = allTools.filter((t) => t.toLowerCase().includes(query.toLowerCase()));
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="absolute inset-0 bg-[#1A284D]/80 backdrop-blur-sm"
+          />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92, y: 18 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.92, y: 18 }}
+            className="relative flex max-h-[90vh] w-full max-w-3xl flex-col overflow-hidden rounded-[3rem] bg-white shadow-2xl"
+          >
+            <div className="flex items-center justify-between border-b border-slate-100 p-8">
+              <div>
+                <p className="text-[10px] font-black uppercase tracking-[0.24em] text-slate-400">Included tools</p>
+                <h3 className="mt-2 text-2xl font-black text-[#1A284D]">20+ Premium SEO Tools</h3>
+              </div>
+              <button
+                type="button"
+                onClick={onClose}
+                className="rounded-full p-2 transition-colors hover:bg-slate-100"
+                aria-label="Close"
+              >
+                <X className="h-6 w-6 text-slate-400" />
+              </button>
+            </div>
+
+            <div className="overflow-y-auto p-8">
+              <div className="mb-6 flex items-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+                <Search className="h-4 w-4 text-slate-400" aria-hidden />
+                <input
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="Search tools..."
+                  className="w-full bg-transparent text-sm font-bold text-[#1A284D] outline-none placeholder:text-slate-400"
+                />
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-2">
+                {filtered.map((tool) => (
+                  <div
+                    key={tool}
+                    className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-black text-[#1A284D] shadow-sm"
+                  >
+                    {tool}
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8" />
+            </div>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
   );
 }
 
@@ -853,10 +949,10 @@ function AhrefsBarFeatures() {
               </motion.button>
               <div className="flex items-center gap-4 font-bold text-blue-100">
                 <div className="flex -space-x-3">
-                  {[1, 2, 3, 4].map((u) => (
+                  {["a1", "a2", "a3", "a4"].map((id) => (
                     <img
-                      key={u}
-                      src={`https://i.pravatar.cc/100?u=${u + 40}`}
+                      key={id}
+                      src={`/avatars/${id}.svg`}
                       className="h-10 w-10 rounded-full border-2 border-blue-600"
                       alt=""
                       referrerPolicy="no-referrer"
@@ -978,17 +1074,13 @@ function LimitationsSection() {
             <p className="font-medium text-blue-100">Our support team is ready to help you 24/7.</p>
           </div>
           <motion.a
-            href={`mailto:support@${(() => {
-              try {
-                return new URL(brand.url).hostname;
-              } catch {
-                return "example.com";
-              }
-            })()}`}
+            href="https://wa.me/"
+            target="_blank"
+            rel="noreferrer"
             whileTap={{ scale: 0.97 }}
             className="shrink-0 rounded-2xl bg-white px-10 py-5 text-lg font-black text-blue-600 shadow-xl transition-transform hover:scale-105"
           >
-            Email support
+            WhatsApp support
           </motion.a>
         </motion.div>
       </div>
@@ -1124,18 +1216,21 @@ function RefFAQ() {
 
 /** Reference-style landing (blue/navy + orange). Content from `homeMarketing`, FAQ & reviews from your components. */
 export function ReferenceStyleHome() {
+  const [toolsOpen, setToolsOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-white text-slate-900 selection:bg-blue-100 selection:text-blue-900">
       <TopHero />
       <ToolStrip />
       <RefPricing />
       <WhyChooseShared />
-      <ToolsIncluded />
+      <ToolsIncluded onOpenTools={() => setToolsOpen(true)} />
       <ComparisonSection />
       <AhrefsBarFeatures />
       <LimitationsSection />
       <TrustpilotReviews />
       <RefFAQ />
+      <ToolsModal isOpen={toolsOpen} onClose={() => setToolsOpen(false)} />
     </div>
   );
 }

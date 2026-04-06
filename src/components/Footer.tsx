@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
-import { Twitter, Facebook, Linkedin } from "lucide-react";
+import { Twitter, Facebook, Linkedin, ArrowRight } from "lucide-react";
+import { SITE_CONFIG } from "@/config/site";
 
 const social = [
   { Icon: Twitter, label: "Twitter", href: "#" },
@@ -10,58 +11,91 @@ const social = [
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-white/10 bg-[#1A284D] pt-6 text-white sm:pt-8">
+    <footer className="relative overflow-hidden border-t border-white/10 bg-[#1A284D] text-white">
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"
         aria-hidden
       />
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8">
         <motion.div
-          className="mx-auto flex max-w-2xl flex-col items-center gap-8 text-center lg:mx-0 lg:items-start lg:text-left"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <p className="max-w-xl text-base leading-relaxed text-white/70">
-              Reliable Ahrefs group buy access for SEOs and agencies, secure dashboard, stable uptime, and
-              human support when you need it.
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+          className="grid gap-10 md:grid-cols-12 md:gap-12"
+        >
+          <div className="md:col-span-6 lg:col-span-5">
+            <p className="text-xs font-black uppercase tracking-[0.24em] text-blue-300/90">
+              {SITE_CONFIG.name}
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[11px] font-black uppercase tracking-[0.2em] text-white/65 lg:justify-start">
-              <Link
-                to="/"
-                className="rounded-lg px-2 py-1 outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-blue-400/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A284D]"
-              >
-                Home
-              </Link>
-              <Link
-                to="/#pricing"
-                className="rounded-lg px-2 py-1 outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-blue-400/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A284D]"
-              >
-                Pricing
-              </Link>
+            <p className="mt-4 max-w-xl text-sm font-medium leading-relaxed text-white/70">
+              Reliable Ahrefs group buy access for SEOs and agencies, secure dashboard, stable uptime, and human support
+              when you need it.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              {social.map(({ Icon, label, href }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+                >
+                  <Icon className="h-4 w-4" aria-hidden />
+                </a>
+              ))}
             </div>
-            <div className="w-full">
-              <p className="mb-3 text-[11px] font-black uppercase tracking-[0.2em] text-blue-400">Follow</p>
-              <div className="flex flex-wrap justify-center gap-3 lg:justify-start">
-                {social.map(({ Icon, label, href }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    aria-label={label}
-                    className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-gray-400 transition-colors hover:bg-white/10 hover:text-white"
-                  >
-                    <Icon className="h-4 w-4" aria-hidden />
-                  </a>
-                ))}
+          </div>
+
+          <div className="md:col-span-6 lg:col-span-7">
+            <div className="grid gap-10 sm:grid-cols-2">
+              <div>
+                <p className="text-[11px] font-black uppercase tracking-[0.22em] text-blue-300/90">Pages</p>
+                <ul className="mt-4 space-y-3 text-sm font-semibold text-white/70">
+                  <li>
+                    <Link className="transition-colors hover:text-white" to="/">
+                      Home
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="transition-colors hover:text-white" to="/#pricing">
+                      Pricing
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="transition-colors hover:text-white" to="/ahrefs-group-buy-guide">
+                      Guide
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="transition-colors hover:text-white" to="/ahrefs-group-buy-risks">
+                      Risks
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <p className="text-[11px] font-black uppercase tracking-[0.22em] text-blue-300/90">Support</p>
+                <p className="mt-4 text-sm font-medium leading-relaxed text-white/70">
+                  Need help? Our team is available 24/7.
+                </p>
+                <a
+                  href="https://wa.me/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-5 inline-flex items-center gap-2 rounded-2xl bg-white px-5 py-3 text-xs font-black uppercase tracking-widest text-[#1A284D] shadow-xl transition-transform hover:-translate-y-0.5"
+                >
+                  WhatsApp Support <ArrowRight className="h-4 w-4" aria-hidden />
+                </a>
               </div>
             </div>
+          </div>
         </motion.div>
 
-        <div className="mt-14 border-t border-white/10 pt-10 sm:mt-16 sm:pt-12">
-          <div className="mx-auto flex max-w-2xl flex-col items-center justify-center gap-2 text-center lg:mx-0 lg:items-start lg:text-left">
-            <p className="text-[11px] font-black uppercase tracking-[0.2em] text-white/45">
-            © {new Date().getFullYear()} Ahrefs Group Buy. All rights reserved.
+        <div className="mt-10 border-t border-white/10 pt-6">
+          <div className="flex flex-col items-center justify-center gap-3 text-center">
+            <p className="text-[11px] font-black uppercase tracking-[0.22em] text-white/45">
+              © {new Date().getFullYear()} {SITE_CONFIG.name}. All rights reserved.
             </p>
           </div>
         </div>

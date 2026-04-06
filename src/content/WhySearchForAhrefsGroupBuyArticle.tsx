@@ -24,7 +24,7 @@ const PILLAR = "/ahrefs-group-buy-guide";
 /** Full article for `/why-search-for-ahrefs-group-buy`. Exactly two in-body anchors → pillar. */
 export function WhySearchForAhrefsGroupBuyArticle() {
   return (
-    <div className="space-y-1 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+    <div className="content-article space-y-1 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
       <H2>Introduction to Why People Search for Ahrefs Group Buy</H2>
 
       <H3>Understanding the Search Intent Behind This Topic</H3>

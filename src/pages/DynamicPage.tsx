@@ -2,6 +2,7 @@ import { useParams, Link, Navigate } from "react-router-dom";
 import { PAGES, SITE_CONFIG } from "@/config/site";
 import { BookOpen, Star, ShieldCheck, Zap, ArrowRight } from "lucide-react";
 import { Helmet } from "react-helmet-async";
+import { canonicalForSlug, jsonLdBreadcrumbs, jsonLdOrganization, jsonLdWebPage, jsonLdWebsite } from "@/lib/seo";
 import { AhrefsGroupBuyGuideArticle } from "@/content/AhrefsGroupBuyGuideArticle";
 import { AhrefsGroupBuyRisksArticle } from "@/content/AhrefsGroupBuyRisksArticle";
 import { WhatIsAhrefsGroupBuyArticle } from "@/content/WhatIsAhrefsGroupBuyArticle";
@@ -24,6 +25,18 @@ import { AhrefsCostComparisonArticle } from "@/content/AhrefsCostComparisonArtic
 import { LowCostSeoToolsArticle } from "@/content/LowCostSeoToolsArticle";
 import { AhrefsMonthlyPriceBreakdownArticle } from "@/content/AhrefsMonthlyPriceBreakdownArticle";
 import { BestCheapAhrefsOptionsArticle } from "@/content/BestCheapAhrefsOptionsArticle";
+import { AhrefsGroupBuyLimitationsArticle } from "@/content/AhrefsGroupBuyLimitationsArticle";
+import { DailyReportLimitsArticle } from "@/content/DailyReportLimitsArticle";
+import { NoProjectsLimitationArticle } from "@/content/NoProjectsLimitationArticle";
+import { AccountBansPreventionArticle } from "@/content/AccountBansPreventionArticle";
+import { IsAhrefsGroupBuySafeArticle } from "@/content/IsAhrefsGroupBuySafeArticle";
+import { CommonGroupBuyProblemsArticle } from "@/content/CommonGroupBuyProblemsArticle";
+import { BestPlanInsteadOfAhrefsGroupBuyArticle } from "@/content/BestPlanInsteadOfAhrefsGroupBuyArticle";
+import { AhrefsAlternativeListArticle } from "@/content/AhrefsAlternativeListArticle";
+import { BestSeoToolAlternativesArticle } from "@/content/BestSeoToolAlternativesArticle";
+import { GroupBuyVsAhrefsStarterArticle } from "@/content/GroupBuyVsAhrefsStarterArticle";
+import { GroupBuyVsOfficialAhrefsArticle } from "@/content/GroupBuyVsOfficialAhrefsArticle";
+import { IsAhrefsStarterBetterArticle } from "@/content/IsAhrefsStarterBetterArticle";
 
 export function DynamicPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -33,7 +46,8 @@ export function DynamicPage() {
     return <Navigate to="/" replace />;
   }
 
-  const canonicalUrl = `${SITE_CONFIG.url}/${page.slug}`;
+  const canonicalUrl = canonicalForSlug(page.slug);
+  const ogImage = SITE_CONFIG.ogImage;
   const keywords = [
     page.title,
     "ahrefs group buy",
@@ -45,6 +59,11 @@ export function DynamicPage() {
   ].join(", ");
 
   const supportingPages = Object.values(PAGES).filter((p) => p.parentSlug === page.slug);
+
+  const ldOrg = jsonLdOrganization();
+  const ldSite = jsonLdWebsite();
+  const ldCrumbs = jsonLdBreadcrumbs(page);
+  const ldPage = jsonLdWebPage(page);
 
   const ctaCard = (
     <div className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-xl sm:p-8 lg:sticky lg:top-24 lg:self-start xl:top-28">
@@ -82,9 +101,16 @@ export function DynamicPage() {
         <meta property="og:description" content={page.metaDescription ?? page.description} />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:locale" content="en_US" />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:image:alt" content={page.title} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={page.metaTitle ?? page.title} />
         <meta name="twitter:description" content={page.metaDescription ?? page.description} />
+        <meta name="twitter:image" content={ogImage} />
+        <script type="application/ld+json">{JSON.stringify(ldOrg)}</script>
+        <script type="application/ld+json">{JSON.stringify(ldSite)}</script>
+        <script type="application/ld+json">{JSON.stringify(ldCrumbs)}</script>
+        <script type="application/ld+json">{JSON.stringify(ldPage)}</script>
       </Helmet>
 
       <div className="border-b border-white/10 bg-[#1A284D] text-white">
@@ -151,6 +177,30 @@ export function DynamicPage() {
               <AhrefsGroupBuyForBeginnersArticle />
             ) : page.slug === "why-search-for-ahrefs-group-buy" ? (
               <WhySearchForAhrefsGroupBuyArticle />
+            ) : page.slug === "ahrefs-group-buy-limitations" ? (
+              <AhrefsGroupBuyLimitationsArticle />
+            ) : page.slug === "daily-report-limits" ? (
+              <DailyReportLimitsArticle />
+            ) : page.slug === "no-projects-limitation" ? (
+              <NoProjectsLimitationArticle />
+            ) : page.slug === "account-bans-prevention" ? (
+              <AccountBansPreventionArticle />
+            ) : page.slug === "is-ahrefs-group-buy-safe" ? (
+              <IsAhrefsGroupBuySafeArticle />
+            ) : page.slug === "common-group-buy-problems" ? (
+              <CommonGroupBuyProblemsArticle />
+            ) : page.slug === "best-plan-instead-of-ahrefs-group-buy" ? (
+              <BestPlanInsteadOfAhrefsGroupBuyArticle />
+            ) : page.slug === "ahrefs-alternative-list" ? (
+              <AhrefsAlternativeListArticle />
+            ) : page.slug === "group-buy-vs-official-ahrefs" ? (
+              <GroupBuyVsOfficialAhrefsArticle />
+            ) : page.slug === "group-buy-vs-ahrefs-starter" ? (
+              <GroupBuyVsAhrefsStarterArticle />
+            ) : page.slug === "is-ahrefs-starter-better" ? (
+              <IsAhrefsStarterBetterArticle />
+            ) : page.slug === "best-seo-tool-alternatives" ? (
+              <BestSeoToolAlternativesArticle />
             ) : (
               <div className="space-y-12">
                 <div className="space-y-8 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">

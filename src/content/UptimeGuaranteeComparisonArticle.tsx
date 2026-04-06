@@ -24,7 +24,7 @@ const PILLAR = "/best-ahrefs-group-buy-provider";
 /** Trust cluster `/uptime-guarantee-comparison`. Exactly two in-body anchors → Trust pillar. */
 export function UptimeGuaranteeComparisonArticle() {
   return (
-    <div className="space-y-1 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+    <div className="content-article space-y-1 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
       <H2>Understanding Uptime in Group Buy SEO Tools</H2>
 
       <H3>What Uptime Means in Simple Terms</H3>

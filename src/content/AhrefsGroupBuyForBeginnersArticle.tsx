@@ -24,7 +24,7 @@ const PILLAR = "/ahrefs-group-buy-guide";
 /** Full article for `/ahrefs-group-buy-for-beginners`. Exactly two in-body anchors → pillar; no footer CTA. */
 export function AhrefsGroupBuyForBeginnersArticle() {
   return (
-    <div className="space-y-1 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+    <div className="content-article space-y-1 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
       <H2>Introduction to Ahrefs Group Buy for Beginners</H2>
 
       <H3>What Ahrefs Group Buy Means for New Users</H3>

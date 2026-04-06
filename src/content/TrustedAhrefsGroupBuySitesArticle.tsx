@@ -24,7 +24,7 @@ const PILLAR = "/best-ahrefs-group-buy-provider";
 /** Trust cluster `/trusted-ahrefs-group-buy-sites`. Exactly two in-body anchors → Trust pillar. */
 export function TrustedAhrefsGroupBuySitesArticle() {
   return (
-    <div className="space-y-1 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+    <div className="content-article space-y-1 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
       <H2>Introduction to Trusted Ahrefs Group Buy Sites</H2>
 
       <H3>What Trusted Ahrefs Group Buy Sites Means</H3>

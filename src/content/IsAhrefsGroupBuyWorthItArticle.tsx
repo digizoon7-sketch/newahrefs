@@ -22,7 +22,7 @@ const AC =
 
 export function IsAhrefsGroupBuyWorthItArticle() {
   return (
-    <div className="space-y-1 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+    <div className="content-article space-y-1 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
       <H2>Introduction to the Worth Question</H2>
 
       <H3>What &ldquo;Worth It&rdquo; Means for Different Users</H3>

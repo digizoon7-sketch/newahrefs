@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 /* Warm stone canvas + orange CTA + teal accent (no indigo / no cold SaaS purple) */
 @theme {
@@ -21,6 +22,43 @@
 @layer base {
   body {
     @apply bg-background text-text font-sans antialiased selection:bg-accent/15 selection:text-text;
+  }
+}
+
+@layer components {
+  .content-article h2 {
+    @apply mt-12 border-b border-slate-200 pb-2 text-2xl font-extrabold tracking-tight text-[#1A284D] first:mt-0 sm:text-3xl;
+    text-transform: none;
+  }
+
+  .content-article h3 {
+    @apply mt-8 text-xl font-bold text-[#1A284D] sm:text-2xl;
+    text-transform: none;
+  }
+
+  .content-article h4 {
+    @apply mt-6 text-lg font-bold text-[#1A284D] sm:text-xl;
+    text-transform: none;
+  }
+
+  .content-article p {
+    @apply mb-4 font-normal leading-relaxed text-slate-600;
+  }
+
+  .content-article ul {
+    @apply mb-6 list-disc space-y-2 pl-5 text-sm font-normal leading-relaxed text-slate-600;
+  }
+
+  .content-article ol {
+    @apply mb-6 list-decimal space-y-2 pl-5 text-sm font-normal leading-relaxed text-slate-600;
+  }
+
+  .content-article ul ::marker {
+    color: #ff5c00;
+  }
+
+  .content-article ol ::marker {
+    color: #ff5c00;
   }
 }
 

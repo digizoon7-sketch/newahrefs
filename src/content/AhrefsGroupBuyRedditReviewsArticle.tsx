@@ -72,7 +72,7 @@ const PILLAR = "/best-ahrefs-group-buy-provider";
 /** Trust cluster `/ahrefs-group-buy-reddit-reviews`. Exactly two in-body anchors → Trust pillar. */
 export function AhrefsGroupBuyRedditReviewsArticle() {
   return (
-    <div className="space-y-1 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+    <div className="content-article space-y-1 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
       <H2>Why People Search Reddit Reviews Before Buying</H2>
 
       <H3>Reddit as a Source of Real User Opinions</H3>

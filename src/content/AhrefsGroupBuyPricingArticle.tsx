@@ -73,7 +73,7 @@ const PILLAR = "/";
 /** Pricing pillar `/ahrefs-group-buy-pricing`. Exactly two in-body anchors → `/` only. */
 export function AhrefsGroupBuyPricingArticle() {
   return (
-    <div className="space-y-1 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+    <div className="content-article space-y-1 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
       <H2>Understanding Official Ahrefs Pricing First</H2>
 
       <H3>Overview of Official Ahrefs Subscription Plans</H3>

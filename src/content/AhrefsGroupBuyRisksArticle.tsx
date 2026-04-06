@@ -25,7 +25,7 @@ const PILLAR = "/";
 /** Risks cluster pillar `/ahrefs-group-buy-risks`. Two in-body anchors → `/` only. */
 export function AhrefsGroupBuyRisksArticle() {
   return (
-    <div className="space-y-1 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+    <div className="content-article space-y-1 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
       <H2>What Ahrefs Group Buy Means</H2>
 
       <H3>How Group Buy SEO Tool Access Usually Works</H3>

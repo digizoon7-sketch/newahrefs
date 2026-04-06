@@ -72,7 +72,7 @@ const PILLAR = "/ahrefs-group-buy-pricing";
 /** Pricing cluster `/cheap-ahrefs-group-buy-price`. Exactly two in-body anchors → Pricing pillar. */
 export function CheapAhrefsGroupBuyPriceArticle() {
   return (
-    <div className="space-y-1 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+    <div className="content-article space-y-1 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
       <H2>What Cheap Ahrefs Group Buy Price Really Means</H2>
 
       <H3>Why Users Search for Low-Cost Ahrefs Group Buy Access</H3>

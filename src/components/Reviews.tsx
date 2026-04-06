@@ -9,28 +9,28 @@ export const REVIEW_ITEMS = [
     content:
       "Saved my agency over $500 a month. Uptime is incredible — same data as official Ahrefs.",
     date: "2 days ago",
-    avatar: "https://picsum.photos/seed/mark/100/100",
+    avatar: "/avatars/a5.svg",
   },
   {
     name: "Sarah Chen",
     role: "Freelance SEO",
     content: "Only reliable provider I've found after 3 others. Stable for 6 months. Highly recommended.",
     date: "1 week ago",
-    avatar: "https://picsum.photos/seed/sarah/100/100",
+    avatar: "/avatars/a2.svg",
   },
   {
     name: "Rahul Kapoor",
     role: "Outreach Specialist",
     content: "Ahrefs Bar for $5 is a steal. Saves tons of time on DR checks for prospects.",
     date: "3 weeks ago",
-    avatar: "https://picsum.photos/seed/rahul/100/100",
+    avatar: "/avatars/a3.svg",
   },
   {
     name: "Elena Rodriguez",
     role: "Content Strategist",
     content: "Real human support — reply in minutes on WhatsApp at 11 PM. Rare these days.",
     date: "1 month ago",
-    avatar: "https://picsum.photos/seed/elena/100/100",
+    avatar: "/avatars/a4.svg",
   },
 ];
 

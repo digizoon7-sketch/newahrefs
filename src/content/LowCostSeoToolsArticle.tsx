@@ -72,7 +72,7 @@ const PILLAR = "/ahrefs-group-buy-pricing";
 /** Pricing cluster `/low-cost-seo-tools`. Exactly two in-body anchors → Pricing pillar. */
 export function LowCostSeoToolsArticle() {
   return (
-    <div className="space-y-1 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+    <div className="content-article space-y-1 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
       <H2>Understanding Ahrefs Group Buy Services</H2>
 
       <H3>What the Term Ahrefs Group Buy Usually Means</H3>

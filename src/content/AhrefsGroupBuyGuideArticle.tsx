@@ -27,7 +27,7 @@ const AC =
 /** Full long-form guide for `/ahrefs-group-buy-guide` (outline + body from content brief). */
 export function AhrefsGroupBuyGuideArticle() {
   return (
-    <div className="space-y-1 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+    <div className="content-article space-y-1 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
       <H2>Understanding Ahrefs Group Buy</H2>
 
       <H3>What Ahrefs Group Buy Means</H3>
