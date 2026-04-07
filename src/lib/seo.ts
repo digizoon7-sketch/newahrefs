@@ -6,13 +6,20 @@ function stripTrailingSlash(url: string) {
   return url.endsWith("/") ? url.slice(0, -1) : url;
 }
 
+function baseUrl() {
+  // Prefer the actual runtime origin (preview/staging/custom domain).
+  if (typeof window !== "undefined" && window.location?.origin) {
+    return stripTrailingSlash(window.location.origin);
+  }
+  return stripTrailingSlash(SITE_CONFIG.url);
+}
+
 export function canonicalForSlug(slug: string) {
-  const base = stripTrailingSlash(SITE_CONFIG.url);
-  return `${base}/${slug}`;
+  return `${baseUrl()}/${slug}`;
 }
 
 export function canonicalHome() {
-  return stripTrailingSlash(SITE_CONFIG.url);
+  return baseUrl();
 }
 
 export function jsonLdOrganization() {
