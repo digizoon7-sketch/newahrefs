@@ -118,7 +118,7 @@ export function ProsAndConsOfAhrefsGroupBuyArticle() {
       <P>
         Another important benefit is that{" "}
         <Link to="/ahrefs-group-buy-guide" className={AC}>
-          Ahrefs group buy
+          shared Ahrefs access
         </Link>{" "}
         can still provide access to premium SEO data that many users
         would not otherwise be able to use. People are often interested in Ahrefs because of its keyword research, backlink

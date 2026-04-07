@@ -120,7 +120,7 @@ export function AhrefsGroupBuyReviewArticle() {
         Feature availability is one of the most important parts of real use because it determines whether the service is
         actually helpful for the user&apos;s tasks. Most{" "}
         <Link to="/ahrefs-group-buy-guide" className={AC}>
-          Ahrefs group buy
+          group-buy services
         </Link>{" "}
         providers advertise access to important functions
         such as keyword research, backlink analysis, and competitor review. In many cases, users do get some level of access

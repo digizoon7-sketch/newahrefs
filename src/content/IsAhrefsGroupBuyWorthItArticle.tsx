@@ -121,7 +121,7 @@ export function IsAhrefsGroupBuyWorthItArticle() {
       <P>
         When users pay less through an{" "}
         <Link to="/ahrefs-group-buy-guide" className={AC}>
-          Ahrefs group buy
+          shared-access plan
         </Link>{" "}
         setup, they are usually getting partial or controlled access
         rather than a complete official tool experience. In many cases, this includes limited keyword research, some
