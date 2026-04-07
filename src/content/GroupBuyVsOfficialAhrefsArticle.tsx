@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
-function P({ children }: { children: ReactNode }) {
-  return <p className="mb-4 font-medium leading-relaxed text-slate-600">{children}</p>;
+function P({ children, className }: { children: ReactNode; className?: string }) {
+  return <p className={`mb-4 font-medium leading-relaxed text-slate-600 ${className ?? ""}`}>{children}</p>;
 }
 
 function H2({ children }: { children: ReactNode }) {

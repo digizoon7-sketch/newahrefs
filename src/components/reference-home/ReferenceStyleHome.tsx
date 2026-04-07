@@ -461,8 +461,10 @@ function RefPricing() {
                     </li>
                   ))}
                 </ul>
+
+                {/* Keep the same in-card tools box; remove any external popup. */}
                 {plan.id === "power" && plan.tools && (
-                  <div className="group relative mb-8 rounded-2xl border border-slate-100 bg-slate-50 p-4">
+                  <div className="mb-8 rounded-2xl border border-slate-100 bg-slate-50 p-4">
                     <div className="mb-3 flex items-center gap-2 rounded-lg border border-slate-200 bg-white p-2">
                       <Search className="h-3 w-3 text-slate-400" />
                       <input
@@ -482,44 +484,6 @@ function RefPricing() {
                           {t}
                         </span>
                       ))}
-                    </div>
-
-                    {/* Hover preview: show full tools list + logos (left side on desktop) */}
-                    <div className="pointer-events-none absolute left-0 top-full z-40 hidden w-full pt-3 group-hover:block lg:right-full lg:left-auto lg:top-0 lg:w-[30rem] lg:pr-4 lg:pt-0">
-                      <div className="pointer-events-auto relative rounded-2xl border border-slate-200 bg-white p-4 shadow-2xl">
-                        <div
-                          className="pointer-events-none absolute -right-2 top-6 hidden h-4 w-4 rotate-45 border border-slate-200 bg-white lg:block"
-                          aria-hidden
-                        />
-                        <div className="mb-3 flex items-center justify-between gap-3">
-                          <p className="text-[10px] font-black uppercase tracking-[0.24em] text-slate-400">
-                            Included tools
-                          </p>
-                          <p className="text-[10px] font-black uppercase tracking-[0.24em] text-slate-400">
-                            {plan.tools.length}+ tools
-                          </p>
-                        </div>
-                        <div className="max-h-72 overflow-y-auto pr-1">
-                          <div className="grid gap-2 sm:grid-cols-2">
-                            {filteredTools.slice(0, 40).map((tool) => (
-                              <div
-                                key={tool}
-                                className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-bold text-[#1A284D]"
-                              >
-                                <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-white">
-                                  <ToolLogo name={tool} />
-                                </div>
-                                <span className="min-w-0 flex-1 truncate">{tool}</span>
-                              </div>
-                            ))}
-                          </div>
-                          {filteredTools.length > 40 ? (
-                            <p className="mt-3 text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                              +{filteredTools.length - 40} more…
-                            </p>
-                          ) : null}
-                        </div>
-                      </div>
                     </div>
                   </div>
                 )}

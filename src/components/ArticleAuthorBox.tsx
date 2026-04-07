@@ -36,7 +36,7 @@ function authorUrlIsInternalHome(authorUrl: string) {
   }
 }
 
-function SocialProfileLink({ href }: { href: string }) {
+function SocialProfileLink({ href, key: _key }: { href: string; key?: string }) {
   const lower = href.toLowerCase();
   let Icon = ExternalLink;
   let label = "Author profile";
