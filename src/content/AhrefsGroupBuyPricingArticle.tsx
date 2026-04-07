@@ -148,7 +148,7 @@ export function AhrefsGroupBuyPricingArticle() {
       </P>
       <P>
         {`Another reason prices differ is that some providers bundle Ahrefs with other SEO tools in one package. That can make the pricing look more attractive, even if the actual Ahrefs usability remains limited. For buyers, the key point is to compare not just the number on the plan, but what that number realistically delivers in day-to-day use. This is especially important for anyone considering a `}
-        <Link to={PILLAR} className={AC}>
+        <Link to="/cheap-ahrefs-group-buy-price" className={AC}>
           cheap ahrefs group buy
         </Link>
         {` option, since the lowest price is often where the biggest compromises appear.`}

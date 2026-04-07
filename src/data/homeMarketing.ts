@@ -38,8 +38,8 @@ export type MarketingPlan = {
 export const MARKETING_PLANS: MarketingPlan[] = [
   {
     id: "lite",
-    name: "Lite Extension",
-    description: "Perfect for beginners and casual SEO analysis.",
+    name: "Ahrefs Extension",
+    description: "Ahrefs Chrome extension only. Great for quick SERP checks.",
     monthlyUsd: 5,
     popular: false,
     features: [
@@ -47,14 +47,14 @@ export const MARKETING_PLANS: MarketingPlan[] = [
       "SERP Metrics (DR/UR)",
       "Backlink Counts",
       "Keyword Difficulty",
-      "Chrome & Firefox",
-      "Email Support",
+      "Chrome Extension",
+      "Basic Support",
     ],
   },
   {
     id: "standard",
-    name: "Standard Dash",
-    description: "Essential tools for growing websites and bloggers.",
+    name: "Ahrefs + Extension",
+    description: "Full Ahrefs access + Chrome extension for daily SEO work.",
     monthlyUsd: 25,
     popular: false,
     features: [
@@ -63,13 +63,13 @@ export const MARKETING_PLANS: MarketingPlan[] = [
       "Keywords Explorer",
       "30 Credits / Day",
       "Rank Tracker",
-      "Priority Support",
+      "Support Included",
     ],
   },
   {
     id: "power",
-    name: "Power Bundle",
-    description: "The ultimate toolkit for SEO professionals and agencies.",
+    name: "Ahrefs + 20+ Tools",
+    description: "Ahrefs plus 20+ premium SEO tools in one bundle.",
     monthlyUsd: 35,
     popular: true,
     features: [
@@ -103,43 +103,37 @@ export const MARKETING_PLANS: MarketingPlan[] = [
       "Woorank",
     ],
   },
-  {
-    id: "agency",
-    name: "Agency Elite",
-    description: "Scale your agency with unlimited power and support.",
-    monthlyUsd: 99,
-    popular: false,
-    features: [
-      "Everything in Power",
-      "White-label Reports",
-      "API Access",
-      "Unlimited Users",
-      "Dedicated Manager",
-      "Custom Integration",
-    ],
-  },
 ];
 
 export const PKR_RATE = 280;
 
 export const COUPON_CODE = "AHREFS20";
 
-/** Same narrative as SharedAccess — official vs your service (visual bars). */
-export const COMPARISON_BARS = [
-  // Keep labels short (homepage bar layout) and map to the “group buy vs direct” comparison.
-  { label: "Price", official: 18, us: 96 },
-  { label: "Cost efficiency", official: 22, us: 95 },
-  { label: "Accessibility", official: 30, us: 93 },
-  { label: "Entry barrier", official: 24, us: 94 },
-  { label: "Learning friendly", official: 28, us: 92 },
-  { label: "Core features", official: 55, us: 90 },
-  { label: "Use case fit", official: 45, us: 91 },
-  { label: "Flexibility", official: 34, us: 93 },
-  { label: "Budget flexibility", official: 26, us: 94 },
-  { label: "Testing path", official: 24, us: 92 },
-  { label: "Affordability", official: 20, us: 96 },
-  { label: "Beginner ROI", official: 30, us: 93 },
-] as const;
+export type ComparisonRow = {
+  feature: string;
+  groupBuy: string;
+  direct: string;
+};
+
+/** Homepage comparison table (Group Buy vs Direct) — concise, easy to scan. */
+export const COMPARISON_TABLE: ComparisonRow[] = [
+  { feature: "Price", groupBuy: "Very affordable", direct: "Expensive for individuals" },
+  { feature: "Cost efficiency", groupBuy: "Best value for money", direct: "High monthly cost" },
+  { feature: "Accessibility", groupBuy: "Easy for beginners, bloggers, freelancers", direct: "Hard for low-budget users" },
+  { feature: "Entry barrier", groupBuy: "Very low", direct: "High upfront commitment" },
+  { feature: "Learning SEO", groupBuy: "Great for learning and practice", direct: "Too costly for beginners" },
+  {
+    feature: "Core features",
+    groupBuy: "Access to important tools for keyword research, backlinks, and competitor analysis",
+    direct: "Full access, but many features may be unnecessary for small users",
+  },
+  { feature: "Use case fit", groupBuy: "Best for niche sites, freelancers, and small projects", direct: "Better for large teams and agencies" },
+  { feature: "Budget flexibility", groupBuy: "No heavy financial pressure", direct: "Regular monthly burden" },
+  { feature: "Flexibility", groupBuy: "Easy to try without big commitment", direct: "Long-term payment pressure" },
+  { feature: "Testing tool", groupBuy: "Good way to test Ahrefs before buying full plan", direct: "No budget-friendly trial path" },
+  { feature: "Affordability", groupBuy: "Suitable for users in every budget range", direct: "Less accessible in price-sensitive markets" },
+  { feature: "ROI for beginners", groupBuy: "High ROI because of low-cost useful SEO data", direct: "Lower ROI if the tool is not used fully" },
+];
 
 export const problemBullets = [
   "Expensive tools costing $99+/month each",
@@ -192,6 +186,5 @@ export const limitations = [
 export function planForProjects(count: number): string {
   if (count <= 1) return "lite";
   if (count <= 5) return "standard";
-  if (count <= 20) return "power";
-  return "agency";
+  return "power";
 }

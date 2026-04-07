@@ -78,10 +78,7 @@ export function AhrefsGroupBuyGuideArticle() {
 
       <H3>Shared Accounts and Access Systems</H3>
       <P>
-        <Link to="/" className={AC}>
-          Ahrefs group buy
-        </Link>{" "}
-        services usually work through a shared access model managed by a third party provider. Instead
+        Ahrefs group buy services usually work through a shared access model managed by a third party provider. Instead
         of giving every user a personal subscription, the provider purchases access on one side and then distributes
         limited use to many customers through its own system. This system may involve a shared browser setup, a custom
         panel, or controlled login access that decides what each user can open and how long they can use it.

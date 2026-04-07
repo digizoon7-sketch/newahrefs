@@ -88,7 +88,7 @@ export function AhrefsGroupBuyRisksArticle() {
       </P>
       <P>
         This is especially risky for agencies, consultants, or anyone handling real client campaigns. Entering client domains, content plans, and research targets into a questionable access system can create avoidable exposure. That is why concerns around{" "}
-        <Link to={PILLAR} className={AC}>
+        <Link to="/is-ahrefs-group-buy-safe" className={AC}>
           ahrefs group buy access
         </Link>{" "}
         go beyond simple affordability. The real issue is whether the user can trust the environment enough to do serious work without compromising security, privacy, or long-term consistency.

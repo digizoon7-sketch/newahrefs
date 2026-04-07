@@ -111,7 +111,7 @@ export function BestPlanInsteadOfAhrefsGroupBuyArticle() {
       </p>
       <p>
         This is one reason many people stop looking for the{" "}
-        <Link to={HOME} className={AC}>
+        <Link to="/best-ahrefs-group-buy-provider" className={AC}>
           best Ahrefs group buy option
         </Link>{" "}
         and start looking for a legitimate replacement instead. A cheaper service may seem useful at first, but if there

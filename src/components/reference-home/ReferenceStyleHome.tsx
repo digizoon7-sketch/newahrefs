@@ -26,7 +26,7 @@ import {
   MARKETING_PLANS,
   PKR_RATE,
   COUPON_CODE,
-  COMPARISON_BARS,
+  COMPARISON_TABLE,
   problemBullets,
   solutionBullets,
   toolsShowcase,
@@ -37,6 +37,99 @@ import type { MarketingPlan } from "@/data/homeMarketing";
 
 /** Match reference `App.tsx` scroll reveal: animate once per page load. */
 const viewOnce = { once: true } as const;
+
+function toolLogoKey(name: string) {
+  const n = name.toLowerCase().trim();
+  if (n === "ahrefs") return "ahrefs";
+  if (n === "semrush") return "semrush";
+  if (n === "canva pro" || n === "canva") return "canva";
+  if (n === "grammarly") return "grammarly";
+  if (n === "moz pro" || n === "moz") return "moz";
+  if (n === "spyfu") return "spyfu";
+  if (n === "ubersuggest") return "ubersuggest";
+  if (n === "envato") return "envato";
+  if (n === "wordai") return "wordai";
+  if (n === "quillbot") return "quillbot";
+  if (n === "discord") return "discord";
+  // fallback: sanitize
+  return n.replace(/[^a-z0-9]+/g, "");
+}
+
+function toolDomain(name: string) {
+  const n = name.toLowerCase().trim();
+  if (n === "ahrefs") return "ahrefs.com";
+  if (n === "semrush") return "semrush.com";
+  if (n === "canva pro" || n === "canva") return "canva.com";
+  if (n === "grammarly") return "grammarly.com";
+  if (n === "moz pro" || n === "moz") return "moz.com";
+  if (n === "spyfu") return "spyfu.com";
+  if (n === "ubersuggest") return "neilpatel.com";
+  if (n === "envato") return "envato.com";
+  if (n === "indexification") return "indexification.com";
+  if (n === "keyword tool") return "keywordtool.io";
+  if (n === "wordai") return "wordai.com";
+  if (n === "spinrewriter") return "spinrewriter.com";
+  if (n === "quillbot") return "quillbot.com";
+  if (n === "picmonkey") return "picmonkey.com";
+  if (n === "stockunlimited") return "stockunlimited.com";
+  if (n === "crello") return "create.vista.com";
+  if (n === "designbold") return "designbold.com";
+  if (n === "storybase") return "storybase.com";
+  if (n === "buzzsumo") return "buzzsumo.com";
+  if (n === "woorank") return "woorank.com";
+  if (n === "discord") return "discord.com";
+  return null;
+}
+
+function ToolLogo({ name }: { name: string }) {
+  const [failed, setFailed] = useState(false);
+  const [triedFavicon, setTriedFavicon] = useState(false);
+
+  const domain = toolDomain(name);
+  const key = toolLogoKey(name);
+  // Prefer real brand icons (Simple Icons) so we don't get letter-style favicons.
+  // Fallback to favicon for tools not covered by Simple Icons, then initials.
+  const simpleIconSrc = key ? `https://cdn.simpleicons.org/${key}` : null;
+  const faviconSrc = domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=64` : null;
+
+  const src = !triedFavicon ? (simpleIconSrc ?? faviconSrc ?? "") : faviconSrc ?? "";
+
+  if (failed) {
+    const initials =
+      name
+        .split(/\s+/)
+        .filter(Boolean)
+        .slice(0, 2)
+        .map((p) => p[0]?.toUpperCase())
+        .join("") || name.slice(0, 2).toUpperCase();
+    return (
+      <span
+        aria-hidden
+        className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 text-sm font-black text-[#1A284D]"
+      >
+        {initials}
+      </span>
+    );
+  }
+
+  return (
+    <img
+      src={src}
+      alt=""
+      className="h-10 w-10"
+      loading="lazy"
+      decoding="async"
+      referrerPolicy="no-referrer"
+      onError={() => {
+        if (!triedFavicon && faviconSrc && src !== faviconSrc) {
+          setTriedFavicon(true);
+          return;
+        }
+        setFailed(true);
+      }}
+    />
+  );
+}
 
 function SecurityBadges({ className }: { className?: string }) {
   return (
@@ -90,10 +183,10 @@ function TopHero() {
               <span className="text-xs font-black uppercase tracking-widest">{hero.badge}</span>
             </div>
 
-            <h1 className="mb-8 text-5xl font-black uppercase leading-none tracking-tighter md:text-8xl">
-              {hero.headlineBefore} <br />
+            <h1 className="mb-8 text-5xl font-black leading-none tracking-tighter md:text-8xl">
+              Ahrefs Group Buy – Get Premium Access{" "}
               <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
-                {hero.headlineAccent}
+                at 90% Off
               </span>
             </h1>
 
@@ -199,7 +292,6 @@ function ToolStrip() {
 function RefPricing() {
   const [billingCycle, setBillingCycle] = useState<"annual" | "monthly">("monthly");
   const [currency, setCurrency] = useState<"usd" | "pkr">("usd");
-  const [projects, setProjects] = useState(5);
   const [toolSearch, setToolSearch] = useState("");
   const [copied, setCopied] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -220,7 +312,7 @@ function RefPricing() {
       .catch(() => {});
   }, []);
 
-  const recommendedId = planForProjects(projects);
+  const recommendedId = MARKETING_PLANS.find((p) => p.popular)?.id ?? MARKETING_PLANS[0]?.id ?? "power";
 
   const priceAmount = (plan: MarketingPlan) => {
     const base = plan.monthlyUsd;
@@ -251,23 +343,12 @@ function RefPricing() {
             viewport={viewOnce}
           >
             <h2 className="mb-6 text-4xl font-black tracking-tight text-[#1A284D] md:text-6xl">
-              Pricing that scales with <span className="text-[#FF5C00]">you.</span>
+              Choose Your Plan – Pricing That Fits Your Budget
             </h2>
             <p className="mx-auto mb-12 max-w-2xl text-lg text-slate-500">
               Choose the perfect plan for your SEO needs. From individual bloggers to large agencies, we&apos;ve got
               you covered.
             </p>
-            <div className="mb-10 flex justify-center">
-              <motion.button
-                type="button"
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setIsModalOpen(true)}
-                className="group inline-flex items-center gap-2 text-sm font-black text-[#1A284D] transition-colors hover:text-[#FF5C00]"
-              >
-                Compare all features in detail
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </motion.button>
-            </div>
 
             <div className="mb-12 flex flex-wrap items-center justify-center gap-4">
               <div className="flex rounded-xl border border-slate-200 bg-white p-1 shadow-sm">
@@ -331,33 +412,10 @@ function RefPricing() {
               </div>
             </div>
 
-            <div className="mx-auto mb-20 max-w-xl rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-              <div className="mb-6 flex items-center justify-between">
-                <span className="text-sm font-bold uppercase tracking-wider text-slate-600">How many projects?</span>
-                <span className="text-2xl font-black text-[#1A284D]">
-                  {projects}
-                  {projects === 100 ? "+" : ""}
-                </span>
-              </div>
-              <input
-                type="range"
-                min={1}
-                max={100}
-                step={1}
-                value={projects}
-                onChange={(e) => setProjects(parseInt(e.target.value, 10))}
-                className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-100 accent-[#FF5C00]"
-              />
-              <div className="mt-4 flex justify-between text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                <span>Individual</span>
-                <span>Small Team</span>
-                <span>Pro Agency</span>
-              </div>
-            </div>
           </motion.div>
         </div>
 
-        <div className="mb-20 grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mb-20 grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
           {MARKETING_PLANS.map((plan, i) => {
             const isRecommended = plan.id === recommendedId;
             const filteredTools = (plan.tools ?? []).filter((t) =>
@@ -404,7 +462,7 @@ function RefPricing() {
                   ))}
                 </ul>
                 {plan.id === "power" && plan.tools && (
-                  <div className="mb-8 rounded-2xl border border-slate-100 bg-slate-50 p-4">
+                  <div className="group relative mb-8 rounded-2xl border border-slate-100 bg-slate-50 p-4">
                     <div className="mb-3 flex items-center gap-2 rounded-lg border border-slate-200 bg-white p-2">
                       <Search className="h-3 w-3 text-slate-400" />
                       <input
@@ -424,6 +482,44 @@ function RefPricing() {
                           {t}
                         </span>
                       ))}
+                    </div>
+
+                    {/* Hover preview: show full tools list + logos (left side on desktop) */}
+                    <div className="pointer-events-none absolute left-0 top-full z-40 hidden w-full pt-3 group-hover:block lg:right-full lg:left-auto lg:top-0 lg:w-[30rem] lg:pr-4 lg:pt-0">
+                      <div className="pointer-events-auto relative rounded-2xl border border-slate-200 bg-white p-4 shadow-2xl">
+                        <div
+                          className="pointer-events-none absolute -right-2 top-6 hidden h-4 w-4 rotate-45 border border-slate-200 bg-white lg:block"
+                          aria-hidden
+                        />
+                        <div className="mb-3 flex items-center justify-between gap-3">
+                          <p className="text-[10px] font-black uppercase tracking-[0.24em] text-slate-400">
+                            Included tools
+                          </p>
+                          <p className="text-[10px] font-black uppercase tracking-[0.24em] text-slate-400">
+                            {plan.tools.length}+ tools
+                          </p>
+                        </div>
+                        <div className="max-h-72 overflow-y-auto pr-1">
+                          <div className="grid gap-2 sm:grid-cols-2">
+                            {filteredTools.slice(0, 40).map((tool) => (
+                              <div
+                                key={tool}
+                                className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-bold text-[#1A284D]"
+                              >
+                                <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-white">
+                                  <ToolLogo name={tool} />
+                                </div>
+                                <span className="min-w-0 flex-1 truncate">{tool}</span>
+                              </div>
+                            ))}
+                          </div>
+                          {filteredTools.length > 40 ? (
+                            <p className="mt-3 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+                              +{filteredTools.length - 40} more…
+                            </p>
+                          ) : null}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 )}
@@ -683,7 +779,9 @@ function ToolsIncluded({ onOpenTools }: { onOpenTools: () => void }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewOnce}
         >
-          <h2 className="mb-6 text-5xl font-black tracking-tight text-[#1A284D] md:text-7xl">20+ Premium SEO Tools</h2>
+          <h2 className="mb-6 text-5xl font-black tracking-tight text-[#1A284D] md:text-7xl">
+            Get Instant Access to 20+ Premium SEO Tools
+          </h2>
           <p className="mx-auto max-w-2xl text-xl font-medium text-gray-500">
             Everything you need for SEO, Content, and Design in one place.
           </p>
@@ -702,12 +800,7 @@ function ToolsIncluded({ onOpenTools }: { onOpenTools: () => void }) {
               )}
             >
               <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-white shadow-sm">
-                <div className="grid grid-cols-2 gap-1">
-                  <div className="h-4 w-4 bg-gray-300" />
-                  <div className="h-4 w-4 bg-gray-400" />
-                  <div className="h-4 w-4 bg-gray-400" />
-                  <div className="h-4 w-4 bg-gray-300" />
-                </div>
+                <ToolLogo name={tool.name} />
               </div>
               <h4 className="mb-1 text-2xl font-black text-[#1A284D]">{tool.name}</h4>
               <p className="text-sm font-bold uppercase tracking-widest text-gray-400">Premium Access</p>
@@ -788,9 +881,12 @@ function ToolsModal({
                 {filtered.map((tool) => (
                   <div
                     key={tool}
-                    className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-black text-[#1A284D] shadow-sm"
+                    className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-black text-[#1A284D] shadow-sm"
                   >
-                    {tool}
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white">
+                      <ToolLogo name={tool} />
+                    </div>
+                    <span className="min-w-0 flex-1 truncate">{tool}</span>
                   </div>
                 ))}
               </div>
@@ -805,76 +901,105 @@ function ToolsModal({
 }
 
 function ComparisonSection() {
+  const featureDot = (feature: string) => {
+    const f = feature.toLowerCase();
+    if (f.includes("price")) return "bg-orange-500";
+    if (f.includes("cost")) return "bg-amber-500";
+    if (f.includes("access")) return "bg-sky-500";
+    if (f.includes("entry")) return "bg-violet-500";
+    if (f.includes("learning")) return "bg-emerald-500";
+    if (f.includes("core")) return "bg-blue-600";
+    if (f.includes("use case")) return "bg-indigo-500";
+    if (f.includes("budget")) return "bg-teal-600";
+    if (f.includes("testing")) return "bg-lime-600";
+    if (f.includes("afford")) return "bg-green-600";
+    if (f.includes("roi")) return "bg-rose-500";
+    return "bg-slate-400";
+  };
+
   return (
     <section className="bg-white py-32" id="comparison">
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
-          className="mb-24 flex flex-col items-center justify-between gap-12 text-center md:flex-row md:text-left"
-          initial={{ opacity: 0, y: 24 }}
+          className="mb-16 text-center"
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewOnce}
           transition={{ duration: 0.5 }}
         >
-          <div className="flex-1">
-            <h2 className="mb-4 text-5xl font-black text-[#1A284D] md:text-7xl">Official Ahrefs</h2>
-            <p className="max-w-md font-bold text-gray-400">Official subscriptions are expensive and designed for large enterprise teams.</p>
-          </div>
-          <div className="text-4xl font-black text-gray-200 md:text-7xl">VS</div>
-          <div className="flex-1 text-center md:text-right">
-            <h2 className="mb-4 text-5xl font-black text-[#1A284D] md:text-7xl">{brand.name}</h2>
-            <p className="mx-auto max-w-md font-bold text-gray-400 md:ml-auto">
-              Our shared access provides the same power at a fraction of the cost.
-            </p>
-          </div>
+          <h2 className="text-4xl font-black tracking-tight text-[#1A284D] md:text-6xl">
+            Official Ahrefs vs {brand.name}: The Price Gap
+          </h2>
         </motion.div>
-        <div className="mx-auto max-w-5xl space-y-6">
-          {COMPARISON_BARS.map((item, i) => (
-            <div key={item.label} className="flex items-center gap-4 md:gap-8">
-              <div className="flex flex-1 justify-end">
-                <div className="relative h-10 w-full max-w-md overflow-hidden rounded-full bg-gray-100">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${item.official}%` }}
-                    viewport={viewOnce}
-                    transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-                    className={cn(
-                      "flex h-full items-center justify-end rounded-full pr-6 text-sm font-black text-white",
-                      item.official > 80
-                        ? "bg-gradient-to-l from-green-400 to-green-500"
-                        : item.official > 60
-                          ? "bg-gradient-to-l from-orange-400 to-orange-500"
-                          : "bg-gradient-to-l from-red-400 to-red-500"
-                    )}
-                  >
-                    {item.official}%
-                  </motion.div>
+        {/* Removed the extra “Official vs {brand.name}” hero block to avoid duplicate messaging. */}
+        <div className="mx-auto max-w-6xl overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+          {/* Mobile: cards (easier to read) */}
+          <div className="divide-y divide-slate-100 md:hidden">
+            {COMPARISON_TABLE.map((row) => (
+              <div key={row.feature} className="p-6">
+                <div className="flex items-center gap-3">
+                  <span className={`h-2.5 w-2.5 rounded-full ${featureDot(row.feature)}`} aria-hidden />
+                  <h3 className="text-base font-black text-[#1A284D]">{row.feature}</h3>
+                </div>
+                <div className="mt-4 grid gap-4">
+                  <div className="rounded-2xl border border-orange-100 bg-orange-50/40 p-4">
+                    <p className="text-[11px] font-black uppercase tracking-widest text-[#FF5C00]">{brand.name} (Group Buy)</p>
+                    <p className="mt-2 text-sm font-medium leading-relaxed text-slate-700">{row.groupBuy}</p>
+                  </div>
+                  <div className="rounded-2xl border border-slate-200 bg-slate-50/60 p-4">
+                    <p className="text-[11px] font-black uppercase tracking-widest text-slate-500">Ahrefs Direct</p>
+                    <p className="mt-2 text-sm font-medium leading-relaxed text-slate-600">{row.direct}</p>
+                  </div>
                 </div>
               </div>
-              <div className="w-32 shrink-0 text-center text-xs font-black uppercase tracking-widest text-[#1A284D]">
-                {item.label}
-              </div>
-              <div className="flex-1">
-                <div className="relative h-10 w-full max-w-md overflow-hidden rounded-full bg-gray-100">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${item.us}%` }}
-                    viewport={viewOnce}
-                    transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-                    className={cn(
-                      "flex h-full items-center justify-start rounded-full pl-6 text-sm font-black text-white",
-                      item.us > 80
-                        ? "bg-gradient-to-r from-green-400 to-green-500"
-                        : item.us > 60
-                          ? "bg-gradient-to-r from-orange-400 to-orange-500"
-                          : "bg-gradient-to-r from-red-400 to-red-500"
-                    )}
-                  >
-                    {item.us}%
-                  </motion.div>
-                </div>
-              </div>
+            ))}
+          </div>
+
+          {/* Desktop/tablet: sticky header table */}
+          <div className="hidden md:block">
+            <div className="overflow-hidden">
+              <table className="w-full border-collapse text-left">
+                <thead className="bg-white">
+                  <tr className="border-b border-slate-200">
+                    <th className="w-[22%] px-6 py-4 text-xs font-black uppercase tracking-widest text-slate-500">
+                      Feature
+                    </th>
+                    <th className="px-6 py-4 text-xs font-black uppercase tracking-widest text-slate-500">
+                      <span className="inline-flex items-center gap-2 rounded-full border border-orange-100 bg-orange-50 px-3 py-1 text-[#FF5C00]">
+                        {brand.name} (Group Buy)
+                      </span>
+                    </th>
+                    <th className="px-6 py-4 text-xs font-black uppercase tracking-widest text-slate-500">
+                      <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-slate-600">
+                        Ahrefs Direct
+                      </span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  {COMPARISON_TABLE.map((row, idx) => (
+                    <tr key={row.feature} className={cn("transition-colors hover:bg-slate-50/70", idx % 2 === 0 && "bg-white")}>
+                      <td className="px-6 py-5 align-top text-sm font-black text-[#1A284D]">
+                        <div className="flex items-start gap-3">
+                          <span className={`mt-1.5 h-2.5 w-2.5 rounded-full ${featureDot(row.feature)}`} aria-hidden />
+                          <span className="leading-snug">{row.feature}</span>
+                        </div>
+                      </td>
+                      <td className="px-6 py-5 align-top text-sm font-medium leading-relaxed text-slate-700">{row.groupBuy}</td>
+                      <td className="px-6 py-5 align-top text-sm font-medium leading-relaxed text-slate-600">{row.direct}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
-          ))}
+          </div>
+
+          <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 bg-white px-6 py-4 text-xs font-bold text-slate-500">
+            <span>Tip: Use this table to match the plan to your budget and workflow.</span>
+            <a href="#pricing" className="font-black uppercase tracking-widest text-[#FF5C00] hover:underline">
+              See pricing
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -919,8 +1044,7 @@ function AhrefsBarFeatures() {
               <ShieldCheck className="h-4 w-4" /> Exclusive Extension Access
             </div>
             <h2 className="mb-8 text-5xl font-black leading-[1.1] md:text-6xl">
-              Ahrefs SEO Toolbar <br />
-              <span className="italic text-blue-200">Directly in Browser</span>
+              Use Ahrefs SEO Toolbar Directly in Your Browser
             </h2>
             <p className="mb-12 max-w-xl text-xl leading-relaxed text-blue-100 opacity-90">
               Stop switching tabs. Get critical SEO metrics like Domain Rating, URL Rating, and Backlink counts directly
@@ -1036,7 +1160,7 @@ function LimitationsSection() {
             <span className="text-[10px] font-black uppercase tracking-widest">Transparency First</span>
           </div>
           <h2 className="mb-8 text-4xl font-black tracking-tight md:text-6xl">
-            Transparent <span className="text-blue-500">Limitations.</span>
+            Transparent Limitations – We Keep it Honest
           </h2>
           <p className="text-xl font-medium leading-relaxed text-blue-100/70">
             We believe in being 100% honest with our users. To maintain the highest stability and lowest prices, we have
@@ -1100,7 +1224,7 @@ function TrustpilotReviews() {
           transition={{ duration: 0.5 }}
         >
           <div className="text-center md:text-left">
-            <h2 className="mb-4 text-4xl font-black text-[#1A284D]">What users say about {brand.name}</h2>
+            <h2 className="mb-4 text-4xl font-black text-[#1A284D]">Success Stories: What Our Users Say About Us</h2>
             <div className="mb-2 flex items-center justify-center gap-1 md:justify-start">
               {[1, 2, 3, 4, 5].map((i) => (
                 <div key={i} className="tp-star" />
@@ -1165,7 +1289,7 @@ function RefFAQ() {
           viewport={viewOnce}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="mb-4 text-4xl font-black text-[#1A284D]">{brand.name} — Frequently Asked Questions</h2>
+          <h2 className="mb-4 text-4xl font-black text-[#1A284D]">Ahrefs Group Buy — Frequently Asked Questions</h2>
           <p className="font-medium text-gray-500">Everything you need to know about our Ahrefs access.</p>
         </motion.div>
         <div className="grid gap-4">
