@@ -199,6 +199,17 @@ export const SITE_CONFIG = {
   name: "AhrefsGroupBuy",
   url: "https://ahrefsgroupbuy.com",
   description: "Premium Ahrefs Group Buy Access for SEO Professionals.",
+  /** Site-wide meta keywords (audits often expect this tag; keep focused, not stuffed). */
+  seoKeywords: [
+    "Ahrefs group buy",
+    "shared Ahrefs access",
+    "SEO tools",
+    "keyword research",
+    "backlink analysis",
+    "site audit",
+    "competitor analysis",
+    "AhrefsGroupBuy",
+  ],
   /** Default social share image (absolute URL). */
   ogImage: "https://ahrefsgroupbuy.com/og.svg",
   /** WhatsApp chat link (country code + number, no + or spaces), e.g. https://wa.me/923001234567 */
