@@ -95,7 +95,7 @@ export function DynamicPage() {
   return (
     <div className="min-h-screen bg-slate-50 pb-20 pt-24 md:pt-28">
       <Helmet>
-        <title>{page.metaTitle ?? `${page.title} | AhrefsGroupBuy`}</title>
+        <title>{page.metaTitle ?? page.title}</title>
         <meta name="description" content={page.metaDescription ?? page.description} />
         <link rel="canonical" href={canonicalUrl} />
         <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />

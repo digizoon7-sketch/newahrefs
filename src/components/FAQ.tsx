@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { motion, AnimatePresence, LayoutGroup } from "motion/react";
 import { Plus, Minus, HelpCircle } from "lucide-react";

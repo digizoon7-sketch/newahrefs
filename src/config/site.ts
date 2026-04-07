@@ -6,7 +6,7 @@ export interface PageData {
   cluster: string;
   isPillar: boolean;
   parentSlug?: string;
-  /** Exact `<title>` text when set (no `| Site` suffix). */
+  /** Exact `<title>` text when set. */
   metaTitle?: string;
   /** Exact `<meta name="description">` when set. */
   metaDescription?: string;
@@ -14,196 +14,173 @@ export interface PageData {
 
 /** Visible H1 on `/ahrefs-group-buy-guide`. */
 const AHREFS_GROUP_BUY_GUIDE_H1 = "Ahrefs Group Buy Guide";
-const AHREFS_GROUP_BUY_GUIDE_META_TITLE =
-  "Ahrefs Group Buy Guide - How It Works, Benefits, Risks, and What Users Should Know";
+const AHREFS_GROUP_BUY_GUIDE_META_TITLE = "Ahrefs Group Buy Guide: How It Works & Key Risks";
 const AHREFS_GROUP_BUY_GUIDE_META_DESCRIPTION =
-  "Read this Ahrefs group buy guide to understand how shared access works, who uses it, what benefits people expect, and the common risks, limits, and practical concerns to keep in mind.";
+  "How Ahrefs group buy works, who uses it, expected benefits, common limits, risks, and practical checks before you choose shared access.";
 
 const WHAT_IS_AHREFS_GROUP_BUY_H1 = "What Is Ahrefs Group Buy";
-const WHAT_IS_AHREFS_GROUP_BUY_META_TITLE =
-  "What Is Ahrefs Group Buy - Meaning, How It Works, and What Users Should Know";
+const WHAT_IS_AHREFS_GROUP_BUY_META_TITLE = "What Is Ahrefs Group Buy? Meaning & How It Works";
 const WHAT_IS_AHREFS_GROUP_BUY_META_DESCRIPTION =
-  "Learn what Ahrefs group buy means, how shared access usually works, why people use it, and the main benefits, limits, and risks users should understand before choosing it.";
+  "What Ahrefs group buy means, how shared access works, why people use it, and key benefits, limits, and risks to know first.";
 
 const IS_AHREFS_GROUP_BUY_WORTH_IT_H1 = "Is Ahrefs Group Buy Worth It";
-const IS_AHREFS_GROUP_BUY_WORTH_IT_META_TITLE =
-  "Is Ahrefs Group Buy Worth It - Cost, Value, Risks, and Real User Expectations";
+const IS_AHREFS_GROUP_BUY_WORTH_IT_META_TITLE = "Is Ahrefs Group Buy Worth It? Cost, Value & Tradeoffs";
 const IS_AHREFS_GROUP_BUY_WORTH_IT_META_DESCRIPTION =
-  "Find out if Ahrefs group buy is worth it by comparing cost, value, limitations, and real user expectations before making a decision.";
+  "See if Ahrefs group buy fits you: compare cost, value, limits, and realistic expectations before you buy shared access.";
 
 const AHREFS_GROUP_BUY_REVIEW_H1 = "Ahrefs Group Buy Review";
-const AHREFS_GROUP_BUY_REVIEW_META_TITLE =
-  "Ahrefs Group Buy Review - Pros, Cons, Features, and Real User Experience";
+const AHREFS_GROUP_BUY_REVIEW_META_TITLE = "Ahrefs Group Buy Review: Pros, Cons & User Experience";
 const AHREFS_GROUP_BUY_REVIEW_META_DESCRIPTION =
-  "Read this Ahrefs group buy review to understand real user experience, benefits, limitations, risks, and whether shared access is actually useful or not.";
+  "Honest look at Ahrefs group buy UX: benefits, limits, risks, and whether shared access is useful for your SEO workflow.";
 
 const PROS_AND_CONS_OF_AHREFS_GROUP_BUY_H1 = "Pros and Cons of Ahrefs Group Buy";
-const PROS_AND_CONS_OF_AHREFS_GROUP_BUY_META_TITLE =
-  "Pros and Cons of Ahrefs Group Buy - Benefits, Risks, and Real User Experience";
+const PROS_AND_CONS_OF_AHREFS_GROUP_BUY_META_TITLE = "Pros and Cons of Ahrefs Group Buy: Benefits vs Risks";
 const PROS_AND_CONS_OF_AHREFS_GROUP_BUY_META_DESCRIPTION =
-  "Explore the pros and cons of Ahrefs group buy, including cost benefits, feature limits, access issues, and what users should realistically expect before choosing it.";
+  "Balance the pros and cons: pricing upside, feature caps, access issues, and what to expect from shared Ahrefs plans.";
 
 const AHREFS_GROUP_BUY_FOR_BEGINNERS_H1 = "Ahrefs Group Buy for Beginners";
-const AHREFS_GROUP_BUY_FOR_BEGINNERS_META_TITLE =
-  "Ahrefs Group Buy for Beginners - A Simple Guide to How It Works and What to Expect";
+const AHREFS_GROUP_BUY_FOR_BEGINNERS_META_TITLE = "Ahrefs Group Buy for Beginners: Simple How-It-Works";
 const AHREFS_GROUP_BUY_FOR_BEGINNERS_META_DESCRIPTION =
-  "Learn how Ahrefs group buy works for beginners, why new users consider it, what benefits and limits to expect, and whether shared access is a smart way to start learning SEO.";
+  "Beginner-friendly overview: how shared Ahrefs works, why people try it, limits to expect, and smarter ways to learn SEO.";
 
 const WHY_SEARCH_FOR_AHREFS_GROUP_BUY_H1 = "Why Search for Ahrefs Group Buy";
-const WHY_SEARCH_FOR_AHREFS_GROUP_BUY_META_TITLE =
-  "Why Search for Ahrefs Group Buy - Reasons, Benefits, and User Intent Explained";
+const WHY_SEARCH_FOR_AHREFS_GROUP_BUY_META_TITLE = "Why People Search Ahrefs Group Buy: Intent & Reasons";
 const WHY_SEARCH_FOR_AHREFS_GROUP_BUY_META_DESCRIPTION =
-  "Discover why people search for Ahrefs group buy, including budget concerns, learning needs, and demand for affordable SEO tools with practical use cases.";
+  "Why users search for Ahrefs group buy: budget needs, learning goals, affordable tools, and common real use cases.";
 
 /** Visible H1 on `/best-ahrefs-group-buy-provider` (Trust pillar). */
 const BEST_AHREFS_GROUP_BUY_PROVIDER_H1 = "Best Ahrefs Group Buy Provider";
-const BEST_AHREFS_GROUP_BUY_PROVIDER_META_TITLE =
-  "Best Ahrefs Group Buy Provider - What to Look For, Key Features, and User Expectations";
+const BEST_AHREFS_GROUP_BUY_PROVIDER_META_TITLE = "Best Ahrefs Group Buy Provider: What to Check First";
 const BEST_AHREFS_GROUP_BUY_PROVIDER_META_DESCRIPTION =
-  "Learn how to evaluate the best Ahrefs group buy provider by comparing pricing, access quality, support, stability, and the practical factors users should check before choosing one.";
+  "Pick a stronger Ahrefs group buy provider: pricing, uptime, support, access quality, and practical checks before you pay.";
 
 const TRUSTED_AHREFS_GROUP_BUY_SITES_H1 = "Trusted Ahrefs Group Buy Sites";
-const TRUSTED_AHREFS_GROUP_BUY_SITES_META_TITLE =
-  "Trusted Ahrefs Group Buy Sites - What to Check, Key Signs, and User Expectations";
+const TRUSTED_AHREFS_GROUP_BUY_SITES_META_TITLE = "Trusted Ahrefs Group Buy Sites: Signs to Look For";
 const TRUSTED_AHREFS_GROUP_BUY_SITES_META_DESCRIPTION =
-  "Learn how to identify trusted Ahrefs group buy sites by checking transparency, access quality, support, stability, and the warning signs users should understand before choosing one.";
+  "Spot more trusted Ahrefs group buy sites: transparency, access quality, support, stability, and red flags to avoid.";
 
 const PROVIDER_REVIEW_GUIDE_H1 = "Ahrefs Group Buy Provider Review Guide";
-const PROVIDER_REVIEW_GUIDE_META_TITLE =
-  "Ahrefs Group Buy Provider Review Guide - How to Evaluate Features, Pricing, Trust, and Real User Value";
+const PROVIDER_REVIEW_GUIDE_META_TITLE = "Ahrefs Group Buy Provider Reviews: How to Evaluate";
 const PROVIDER_REVIEW_GUIDE_META_DESCRIPTION =
-  "Read this Ahrefs group buy provider review guide to learn how to evaluate service quality, pricing, usability, support, and trust signals before choosing any provider.";
+  "Use this review framework to judge providers on quality, pricing, UX, support, and trust before you subscribe.";
 
 const AHREFS_GROUP_BUY_SCAM_OR_LEGIT_H1 = "Ahrefs Group Buy Scam or Legit";
-const AHREFS_GROUP_BUY_SCAM_OR_LEGIT_META_TITLE =
-  "Ahrefs Group Buy Scam or Legit - Risks, Reality, and What Users Should Know";
+const AHREFS_GROUP_BUY_SCAM_OR_LEGIT_META_TITLE = "Ahrefs Group Buy Scam or Legit? Risks & Real Talk";
 const AHREFS_GROUP_BUY_SCAM_OR_LEGIT_META_DESCRIPTION =
-  "Find out whether Ahrefs group buy is a scam or legit by understanding how shared access works, what warning signs to watch for, and what users should realistically expect.";
+  "Is Ahrefs group buy legit or risky? How shared access works, scam warning signs, and realistic expectations for users.";
 
 const HOW_TO_CHOOSE_AHREFS_PROVIDER_H1 = "How to Choose Ahrefs Group Buy Provider";
-const HOW_TO_CHOOSE_AHREFS_PROVIDER_META_TITLE =
-  "How to Choose Ahrefs Group Buy Provider - What to Check Before You Buy";
+const HOW_TO_CHOOSE_AHREFS_PROVIDER_META_TITLE = "How to Choose an Ahrefs Group Buy Provider";
 const HOW_TO_CHOOSE_AHREFS_PROVIDER_META_DESCRIPTION =
-  "Learn how to choose an Ahrefs group buy provider by checking pricing, features, support, stability, and trust signals before making a decision.";
+  "Choose an Ahrefs group buy provider with a simple checklist: pricing, features, support, stability, and trust signals.";
 
 const UPTIME_GUARANTEE_COMPARISON_H1 = "Ahrefs Group Buy Uptime Guarantee Comparison";
-const UPTIME_GUARANTEE_COMPARISON_META_TITLE =
-  "Ahrefs Group Buy Uptime Guarantee Comparison - What You Need to Know";
+const UPTIME_GUARANTEE_COMPARISON_META_TITLE = "Ahrefs Group Buy Uptime Guarantees: What to Compare";
 const UPTIME_GUARANTEE_COMPARISON_META_DESCRIPTION =
-  "Compare uptime guarantees in Ahrefs group buy services. Learn what uptime means, why it matters, and how different providers perform in real scenarios.";
+  "Compare Ahrefs group buy uptime claims vs reality: what uptime means, why it matters, and how providers differ day to day.";
 
 const AHREFS_GROUP_BUY_REDDIT_REVIEWS_H1 = "Ahrefs Group Buy Reddit Reviews";
-const AHREFS_GROUP_BUY_REDDIT_REVIEWS_META_TITLE =
-  "Ahrefs Group Buy Reddit Reviews - What Users Really Say";
+const AHREFS_GROUP_BUY_REDDIT_REVIEWS_META_TITLE = "Ahrefs Group Buy Reddit Reviews: Key Takeaways";
 const AHREFS_GROUP_BUY_REDDIT_REVIEWS_META_DESCRIPTION =
-  "Explore Ahrefs group buy Reddit reviews to understand user feedback, common complaints, reliability concerns, pricing expectations, and what to check before choosing a service.";
+  "Ahrefs group buy on Reddit: themes users repeat, reliability gripes, pricing talk, and what to verify before you buy.";
 
 /** Visible H1 on `/ahrefs-group-buy-pricing` (Pricing pillar). */
 const AHREFS_GROUP_BUY_PRICING_H1 = "Ahrefs Group Buy Pricing";
-const AHREFS_GROUP_BUY_PRICING_META_TITLE =
-  "Ahrefs Group Buy Pricing - Full Cost Breakdown & Comparison";
+const AHREFS_GROUP_BUY_PRICING_META_TITLE = "Ahrefs Group Buy Pricing: Cost Breakdown & Compare";
 const AHREFS_GROUP_BUY_PRICING_META_DESCRIPTION =
-  "Explore Ahrefs group buy pricing, compare it with official plans, and understand what you really get at different price levels.";
+  "Ahrefs group buy pricing vs official plans: typical tiers, what you usually get, and how to match price to real usage.";
 
 /** Visible H1 on `/ahrefs-group-buy-risks` (Risks pillar). */
 const AHREFS_GROUP_BUY_RISKS_H1 = "Ahrefs Group Buy Risks";
-const AHREFS_GROUP_BUY_RISKS_META_TITLE =
-  "Ahrefs Group Buy Risks - What Users Should Know Before Joining";
+const AHREFS_GROUP_BUY_RISKS_META_TITLE = "Ahrefs Group Buy Risks: What to Know Before Joining";
 const AHREFS_GROUP_BUY_RISKS_META_DESCRIPTION =
-  "Learn the real Ahrefs group buy risks, including security concerns, account instability, data privacy issues, and better alternatives for serious SEO work.";
+  "Real Ahrefs group buy risks: weaker security, shaky access, privacy gaps, and when official or other tools make sense.";
 
 const AHREFS_GROUP_BUY_LIMITATIONS_H1 = "Ahrefs Group Buy Limitations";
-const AHREFS_GROUP_BUY_LIMITATIONS_META_TITLE = "Ahrefs Group Buy Limitations - What Users Need to Know";
+const AHREFS_GROUP_BUY_LIMITATIONS_META_TITLE = "Ahrefs Group Buy Limits: Features, Data & Access";
 const AHREFS_GROUP_BUY_LIMITATIONS_META_DESCRIPTION =
-  "Explore the real Ahrefs group buy limitations, including restricted features, unstable access, weak data reliability, and why these issues affect SEO work.";
+  "Key Ahrefs group buy limits: gated features, shaky sessions, weaker data, and how that hurts everyday SEO workflows.";
 
 const DAILY_REPORT_LIMITS_H1 = "Ahrefs Group Buy Daily Report Limits: Complete Guide for Smart Usage";
-const DAILY_REPORT_LIMITS_META_TITLE = "Ahrefs Group Buy Daily Report Limits (Full Guide + Real Usage Insights)";
+const DAILY_REPORT_LIMITS_META_TITLE = "Ahrefs Group Buy Daily Report Limits Explained";
 const DAILY_REPORT_LIMITS_META_DESCRIPTION =
-  "Learn how Ahrefs group buy daily report limits work, why restrictions exist, and how to manage usage efficiently without wasting credits.";
+  "How daily report limits work in shared Ahrefs, why caps exist, and how to use credits without burning them fast.";
 
 const NO_PROJECTS_LIMITATION_H1 = "Ahrefs Group Buy No Projects Limitation: What It Means for SEO Users";
-const NO_PROJECTS_LIMITATION_META_TITLE = "Ahrefs Group Buy No Projects Limitation Explained";
+const NO_PROJECTS_LIMITATION_META_TITLE = "Ahrefs Group Buy: No Projects Limit Explained";
 const NO_PROJECTS_LIMITATION_META_DESCRIPTION =
-  "Learn what the Ahrefs group buy no projects limitation means, how it affects SEO work, and what users can do when project access is restricted.";
+  "What no-projects limits mean in Ahrefs group buy, how it changes SEO workflows, and simple workarounds to stay organized.";
 
 const ACCOUNT_BANS_PREVENTION_H1 = "Ahrefs Group Buy Account Bans Prevention: What Users Need to Know";
-const ACCOUNT_BANS_PREVENTION_META_TITLE = "Ahrefs Group Buy Account Bans Prevention Guide";
+const ACCOUNT_BANS_PREVENTION_META_TITLE = "Ahrefs Group Buy Account Bans: Prevention Tips";
 const ACCOUNT_BANS_PREVENTION_META_DESCRIPTION =
-  "Learn how Ahrefs group buy account bans happen, why providers apply restrictions, and what users do to reduce ban risks in shared access setups.";
+  "Why shared Ahrefs accounts get banned, how providers try to prevent it, and habits that lower your disruption risk.";
 
 const IS_AHREFS_GROUP_BUY_SAFE_H1 = "Is Ahrefs Group Buy Safe?";
-const IS_AHREFS_GROUP_BUY_SAFE_META_TITLE = "Is Ahrefs Group Buy Safe? Risks, Limitations, and Better Alternatives";
+const IS_AHREFS_GROUP_BUY_SAFE_META_TITLE = "Is Ahrefs Group Buy Safe? Risks & Safer Alternatives";
 const IS_AHREFS_GROUP_BUY_SAFE_META_DESCRIPTION =
-  "Learn whether an Ahrefs group buy is safe, what risks are involved, how shared SEO tool access works, and what alternatives may be better for long-term use.";
+  "Is Ahrefs group buy safe enough for you? Risks of shared logins, limits versus official plans, and longer-term options.";
 
 const COMMON_GROUP_BUY_PROBLEMS_H1 = "Common Group Buy Problems";
-const COMMON_GROUP_BUY_PROBLEMS_META_TITLE = "Common Group Buy Problems - Risks, Limitations, and What Users Should Know";
+const COMMON_GROUP_BUY_PROBLEMS_META_TITLE = "Common Group Buy Problems: Access, Privacy & Limits";
 const COMMON_GROUP_BUY_PROBLEMS_META_DESCRIPTION =
-  "Explore the most common group buy problems, including access issues, privacy concerns, poor reliability, and hidden limitations that affect overall value.";
+  "Typical group buy problems: failed logins, crowded sessions, slow support, privacy worries, and hidden usage ceilings.";
 
 const BEST_PLAN_INSTEAD_OF_AHREFS_GROUP_BUY_H1 = "Best Plan Instead of Ahrefs Group Buy";
-const BEST_PLAN_INSTEAD_OF_AHREFS_GROUP_BUY_META_TITLE =
-  "Best Plan Instead of Ahrefs Group Buy: Safer and Smarter Options";
+const BEST_PLAN_INSTEAD_OF_AHREFS_GROUP_BUY_META_TITLE = "Best Plan Instead of Ahrefs Group Buy: Safer Options";
 const BEST_PLAN_INSTEAD_OF_AHREFS_GROUP_BUY_META_DESCRIPTION =
-  "Discover the best plan instead of Ahrefs group buy, including safer SEO tool options, budget-friendly alternatives, and practical ways to choose the right setup.";
+  "Safer plans than Ahrefs group buy: official tiers, other SEO suites, and how to pick based on budget and workflow.";
 
 const AHREFS_ALTERNATIVE_LIST_H1 = "Ahrefs Group Buy Alternative List";
-const AHREFS_ALTERNATIVE_LIST_META_TITLE = "Ahrefs Group Buy Alternative List: Best SEO Tools You Can Use Instead";
+const AHREFS_ALTERNATIVE_LIST_META_TITLE = "Ahrefs Group Buy Alternatives: SEO Tools to Consider";
 const AHREFS_ALTERNATIVE_LIST_META_DESCRIPTION =
-  "Explore a complete Ahrefs group buy alternative list including free and paid SEO tools with better reliability, pricing, and features.";
+  "Alternatives to Ahrefs group buy: paid SEO suites, budget tools, and free starters with clearer reliability than shared logins.";
 
 const GROUP_BUY_VS_OFFICIAL_AHREFS_H1 = "Group Buy vs Official Ahrefs: Which Option Makes More Sense?";
-const GROUP_BUY_VS_OFFICIAL_AHREFS_META_TITLE = "Group Buy vs Official Ahrefs: What Is the Better SEO Choice?";
+const GROUP_BUY_VS_OFFICIAL_AHREFS_META_TITLE = "Group Buy vs Official Ahrefs: Which Fits You Better?";
 const GROUP_BUY_VS_OFFICIAL_AHREFS_META_DESCRIPTION =
-  "Compare group buy vs official Ahrefs access in terms of features, reliability, data quality, security, pricing, and long-term SEO value for different types of users.";
+  "Group buy vs official Ahrefs on features, stability, data trust, security, pricing, and who should pay for the real thing.";
 
 const GROUP_BUY_VS_AHREFS_STARTER_H1 = "Group Buy vs Ahrefs Starter: Which One Is the Better Choice?";
-const GROUP_BUY_VS_AHREFS_STARTER_META_TITLE = "Group Buy vs Ahrefs Starter: Which Option Is Better for SEO?";
+const GROUP_BUY_VS_AHREFS_STARTER_META_TITLE = "Group Buy vs Ahrefs Starter: Compare for Your SEO";
 const GROUP_BUY_VS_AHREFS_STARTER_META_DESCRIPTION =
-  "Compare group buy vs Ahrefs Starter in terms of pricing, features, reliability, usability, and long-term SEO value to choose the better option for your workflow.";
+  "Group buy vs Ahrefs Starter on price, features, reliability, UX, and long-term SEO value for solo users and small teams.";
 
 const IS_AHREFS_STARTER_BETTER_H1 = "Ahrefs Group Buy vs Ahrefs Starter: Is Ahrefs Starter Better?";
-const IS_AHREFS_STARTER_BETTER_META_TITLE = "Ahrefs Group Buy vs Ahrefs Starter: Is Ahrefs Starter Better?";
+const IS_AHREFS_STARTER_BETTER_META_TITLE = "Ahrefs Group Buy vs Starter: Which Is the Smarter Buy?";
 const IS_AHREFS_STARTER_BETTER_META_DESCRIPTION =
-  "Compare Ahrefs group buy access with Ahrefs Starter to understand pricing, risks, features, limits, and which option makes more sense for individuals and small teams.";
+  "Ahrefs group buy vs Starter for price, risk, feature caps, and which option fits individuals and small teams more cleanly.";
 
 const CHEAP_AHREFS_GROUP_BUY_PRICE_H1 = "Cheap Ahrefs Group Buy Price";
-const CHEAP_AHREFS_GROUP_BUY_PRICE_META_TITLE =
-  "Cheap Ahrefs Group Buy Price - Cost, Value, and What to Expect";
+const CHEAP_AHREFS_GROUP_BUY_PRICE_META_TITLE = "Cheap Ahrefs Group Buy Price: Value vs Low-Cost Plans";
 const CHEAP_AHREFS_GROUP_BUY_PRICE_META_DESCRIPTION =
-  "Explore cheap Ahrefs group buy price options, understand what low-cost plans usually include, and compare pricing with access quality and real usability.";
+  "Cheap Ahrefs group buy pricing: what entry tiers include, tradeoffs versus official plans, and signs of weak value.";
 
 const CHEAP_AHREFS_ACCESS_GUIDE_H1 = "Cheap Ahrefs Group Buy Access Guide";
-const CHEAP_AHREFS_ACCESS_GUIDE_META_TITLE =
-  "Cheap Ahrefs Group Buy Access Guide - Ahrefs Group Buy Options Explained";
+const CHEAP_AHREFS_ACCESS_GUIDE_META_TITLE = "Cheap Ahrefs Access: Group Buy Options Explained";
 const CHEAP_AHREFS_ACCESS_GUIDE_META_DESCRIPTION =
-  "Read this cheap Ahrefs access guide to understand Ahrefs group buy options, pricing expectations, access limitations, and how to choose a more practical low-cost setup.";
+  "Cheap Ahrefs access through group buy: typical pricing bands, limits to expect, and how to pick a workable budget plan.";
 
 const AHREFS_COST_COMPARISON_H1 = "Ahrefs Cost Comparison";
-const AHREFS_COST_COMPARISON_META_TITLE =
-  "Ahrefs Cost Comparison - Ahrefs Group Buy vs Full Subscription";
+const AHREFS_COST_COMPARISON_META_TITLE = "Ahrefs Cost Comparison: Group Buy vs Full Plans";
 const AHREFS_COST_COMPARISON_META_DESCRIPTION =
-  "Explore an Ahrefs cost comparison covering Ahrefs group buy access, official pricing differences, value tradeoffs, and what each option really offers.";
+  "Compare Ahrefs costs: group buy deals versus full subscriptions, hidden limits, and what each tier really buys you.";
 
 const LOW_COST_SEO_TOOLS_H1 = "Ahrefs Group Buy: A Practical Guide to Low-Cost SEO Tools";
-const LOW_COST_SEO_TOOLS_META_TITLE =
-  "Ahrefs Group Buy - What to Know Before Choosing Low-Cost SEO Tools";
+const LOW_COST_SEO_TOOLS_META_TITLE = "Ahrefs Group Buy & Low-Cost SEO Tools: What to Know";
 const LOW_COST_SEO_TOOLS_META_DESCRIPTION =
-  "Learn what Ahrefs group buy services are, how they work, their risks, and what to consider when comparing low-cost SEO tools for keyword research, audits, and competitor analysis.";
+  "What Ahrefs group buy is, how low-cost SEO stacks differ, risks to expect, and how to audit tools before you pay.";
 
 const AHREFS_MONTHLY_PRICE_BREAKDOWN_H1 =
   "Ahrefs Group Buy: Monthly Price Breakdown and What Users Should Know";
-const AHREFS_MONTHLY_PRICE_BREAKDOWN_META_TITLE =
-  "Ahrefs Group Buy - Monthly Price Breakdown and Budget Access Guide";
+const AHREFS_MONTHLY_PRICE_BREAKDOWN_META_TITLE = "Ahrefs Group Buy Monthly Costs: Budget Access Guide";
 const AHREFS_MONTHLY_PRICE_BREAKDOWN_META_DESCRIPTION =
-  "Learn what ahrefs group buy means, why users look for low-cost access, how Ahrefs pricing compares, and what risks, limits, and alternatives users should know before choosing.";
+  "Monthly Ahrefs group buy costs versus official pricing: why users go budget, common caps, risks, and alternatives to try.";
 
 const BEST_CHEAP_AHREFS_OPTIONS_H1 = "Best Cheap Ahrefs Group Buy Options and How to Compare Them";
-const BEST_CHEAP_AHREFS_OPTIONS_META_TITLE =
-  "Best Cheap Ahrefs Group Buy Options - What Users Should Know";
+const BEST_CHEAP_AHREFS_OPTIONS_META_TITLE = "Best Cheap Ahrefs Group Buy Options: Compare Smart";
 const BEST_CHEAP_AHREFS_OPTIONS_META_DESCRIPTION =
-  "Explore the best cheap Ahrefs group buy options, what users expect from low-cost shared access, the common risks, feature limits, and smarter ways to compare budget SEO tool choices.";
+  "Compare cheap Ahrefs group buy offers: realistic expectations, frequent risks, usage limits, and smarter budget shopping.";
 
 /** Editorial byline for guide pages, UI box, and JSON-LD `Person` / Article author. Replace with a real name and image URL when you publish under a specific person. */
 export type SiteContentAuthor = {
@@ -764,9 +741,9 @@ SITE_CONFIG.clusters.forEach((cluster) => {
         title: "Best SEO Tool Alternatives to Ahrefs Group Buy",
         description:
           "Looking for alternatives to Ahrefs group buy access? Explore safer, more reliable SEO tool options, compare features, pricing, risks, and find the best fit for your workflow.",
-        metaTitle: "Ahrefs Group Buy Alternatives: Better SEO Tools for Safer, Smarter Use",
+        metaTitle: "Ahrefs Group Buy Alternatives: SEO Tools to Try",
         metaDescription:
-          "Looking for alternatives to Ahrefs group buy access? Explore safer, more reliable SEO tool options, compare features, pricing, risks, and find the best fit for your workflow.",
+          "Safer Ahrefs group buy alternatives: compare SEO tools on features, price, and reliability before you switch.",
         cluster: cluster.name,
         isPillar: false,
         parentSlug: cluster.pillar,

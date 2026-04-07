@@ -1,5 +1,4 @@
 import type { ComponentType, ReactNode } from "react";
-import { Helmet } from "react-helmet-async";
 import {
   Shield,
   BookOpen,
@@ -14,7 +13,6 @@ import {
   CircleDot,
 } from "lucide-react";
 import { SITE_CONFIG } from "@/config/site";
-import { canonicalHome } from "@/lib/seo";
 
 const PATH = "/privacy";
 const TITLE = "Privacy Policy";
@@ -63,29 +61,10 @@ function BulletList({ items }: { items: string[] }) {
 }
 
 export function Privacy() {
-  const canonical = `${canonicalHome()}${PATH}`;
   const lastUpdated = new Date().toISOString().slice(0, 10);
 
   return (
     <>
-      <Helmet>
-        <title>{`${TITLE} | ${SITE_CONFIG.name}`}</title>
-        <meta name="description" content={DESCRIPTION} />
-        <link rel="canonical" href={canonical} />
-        <meta name="robots" content="index,follow" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={`${TITLE} | ${SITE_CONFIG.name}`} />
-        <meta property="og:description" content={DESCRIPTION} />
-        <meta property="og:url" content={canonical} />
-        <meta property="og:site_name" content={SITE_CONFIG.name} />
-        <meta property="og:locale" content="en_US" />
-        <meta property="og:image" content={SITE_CONFIG.ogImage} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${TITLE} | ${SITE_CONFIG.name}`} />
-        <meta name="twitter:description" content={DESCRIPTION} />
-        <meta name="twitter:image" content={SITE_CONFIG.ogImage} />
-      </Helmet>
-
       <div className="min-h-screen bg-slate-50 pb-20 pt-24 md:pt-28">
         <div className="border-b border-white/10 bg-[#1A284D] text-white">
           <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 md:py-14 lg:px-8">

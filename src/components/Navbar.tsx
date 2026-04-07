@@ -1,5 +1,8 @@
+"use client";
+
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { usePathname } from "next/navigation";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -11,7 +14,7 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const location = useLocation();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -22,10 +25,10 @@ export function Navbar() {
   useEffect(() => {
     setIsOpen(false);
     setActiveDropdown(null);
-  }, [location]);
+  }, [pathname]);
 
   /** Reference: transparent over navy hero on home only; inner pages always use the light bar. */
-  const lightNav = scrolled || location.pathname !== "/";
+  const lightNav = scrolled || pathname !== "/";
 
   return (
     <nav
@@ -50,10 +53,10 @@ export function Navbar() {
               className={cn(
                 "py-2 text-xs font-bold uppercase tracking-widest transition-colors hover:text-blue-600",
                 lightNav
-                  ? location.pathname === "/"
+                  ? pathname === "/"
                     ? "text-blue-600"
                     : "text-gray-600"
-                  : location.pathname === "/"
+                  : pathname === "/"
                     ? "text-white"
                     : "text-blue-100"
               )}
@@ -159,7 +162,7 @@ export function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className={cn(
                     "block text-xl font-bold transition-colors hover:text-blue-300",
-                    location.pathname === "/" ? "text-blue-300" : "text-white"
+                    pathname === "/" ? "text-blue-300" : "text-white"
                   )}
                 >
                   Home
