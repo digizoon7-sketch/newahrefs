@@ -126,10 +126,19 @@ export const COUPON_CODE = "AHREFS20";
 
 /** Same narrative as SharedAccess — official vs your service (visual bars). */
 export const COMPARISON_BARS = [
-  { label: "Price & value", official: 18, us: 96 },
-  { label: "Solo SEO friendly", official: 32, us: 94 },
-  { label: "Daily limits room", official: 40, us: 91 },
-  { label: "Extra tools bundled", official: 22, us: 93 },
+  // Keep labels short (homepage bar layout) and map to the “group buy vs direct” comparison.
+  { label: "Price", official: 18, us: 96 },
+  { label: "Cost efficiency", official: 22, us: 95 },
+  { label: "Accessibility", official: 30, us: 93 },
+  { label: "Entry barrier", official: 24, us: 94 },
+  { label: "Learning friendly", official: 28, us: 92 },
+  { label: "Core features", official: 55, us: 90 },
+  { label: "Use case fit", official: 45, us: 91 },
+  { label: "Flexibility", official: 34, us: 93 },
+  { label: "Budget flexibility", official: 26, us: 94 },
+  { label: "Testing path", official: 24, us: 92 },
+  { label: "Affordability", official: 20, us: 96 },
+  { label: "Beginner ROI", official: 30, us: 93 },
 ] as const;
 
 export const problemBullets = [
