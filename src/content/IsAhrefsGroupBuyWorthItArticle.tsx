@@ -20,6 +20,33 @@ function H3({ children }: { children: ReactNode }) {
 const AC =
   "font-bold text-blue-700 underline decoration-blue-400/60 underline-offset-2 hover:text-blue-800";
 
+function ArticleFigure({
+  src,
+  alt,
+  caption,
+  priority,
+}: {
+  src: string;
+  alt: string;
+  caption: string;
+  priority?: boolean;
+}) {
+  return (
+    <figure className="not-prose my-6 overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/80 shadow-sm">
+      <img
+        src={src}
+        alt={alt}
+        className="mx-auto h-auto w-full max-h-[min(70vh,640px)] object-contain bg-white"
+        loading={priority ? "eager" : "lazy"}
+        decoding="async"
+      />
+      <figcaption className="border-t border-slate-200 bg-white px-4 py-3 text-sm font-bold leading-snug text-[#1A284D]">
+        {caption}
+      </figcaption>
+    </figure>
+  );
+}
+
 export function IsAhrefsGroupBuyWorthItArticle() {
   return (
     <div className="content-article space-y-1 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
@@ -89,7 +116,20 @@ export function IsAhrefsGroupBuyWorthItArticle() {
         feels worth it for the kind of work they actually plan to do.
       </P>
 
+      <ArticleFigure
+        priority
+        src="/images/is-ahrefs-group-buy-worth-it/02-goals-checklist.png"
+        alt="Illustration of a browser-style window with floating cards: bar charts, a performance gauge, code symbols, and a checklist titled Checklist with five completed items—represents defining what you need from SEO before judging value"
+        caption="Goals checklist (what you need from SEO): metrics, technical work, and must-have outcomes"
+      />
+
       <H2>Cost vs Value Comparison</H2>
+
+      <ArticleFigure
+        src="/images/is-ahrefs-group-buy-worth-it/01-cost-vs-value.png"
+        alt="A hand holding a marker beside a drawn balance scale: the pan labeled Value sits higher while the pan labeled Cost hangs lower, illustrating cost outweighing value in a simple cost-benefit metaphor"
+        caption="Cost vs value scales: weigh what you pay against what you actually get from shared access"
+      />
 
       <H3>Understanding the Price Difference</H3>
       <P>
@@ -187,6 +227,12 @@ export function IsAhrefsGroupBuyWorthItArticle() {
       </P>
 
       <H2>Who May Find Shared Access Worth It</H2>
+
+      <ArticleFigure
+        src="/images/is-ahrefs-group-buy-worth-it/03-hobby-vs-serious-seo.png"
+        alt="Infographic comparing split testing versus SEO split testing: two tree-style diagrams with bar charts, a central question mark, and small analyst figures—used here as a metaphor for light hobby-style SEO needs versus deeper, experiment-heavy professional SEO"
+        caption="Hobby vs serious SEO split: casual checks and learning differ from intensive, measurement-driven SEO"
+      />
 
       <H3>Beginners and Learning Users</H3>
       <P>
@@ -360,6 +406,12 @@ export function IsAhrefsGroupBuyWorthItArticle() {
 
       <H2>Benefits vs Tradeoffs in Real Use</H2>
 
+      <ArticleFigure
+        src="/images/is-ahrefs-group-buy-worth-it/04-limits-tradeoffs.png"
+        alt="Abstract illustration of intertwined tracks, pipes, scaffolding, and colorful spheres suggesting a complex Rube Goldberg–style system—metaphor for many moving parts when weighing limits, tradeoffs, and dependencies in shared tool access"
+        caption="Limits / tradeoffs abstract: savings, caps, stability, and workflow all connect in non-obvious ways"
+      />
+
       <H3>Cost Savings as the Main Benefit</H3>
       <P>
         The main reason users consider shared access is the potential for cost savings. For individuals who cannot
@@ -524,6 +576,12 @@ export function IsAhrefsGroupBuyWorthItArticle() {
       </P>
 
       <H2>Final Verdict: Is Ahrefs Group Buy Worth It</H2>
+
+      <ArticleFigure
+        src="/images/is-ahrefs-group-buy-worth-it/05-decision-yes-no-maybe.png"
+        alt="3D figure with a large pen marking a checklist beside three options labeled yes, no, and maybe, with a checkmark on maybe—illustrates a simple decision frame rather than a single obvious answer"
+        caption="Decision: yes / no / maybe — your use case and risk tolerance pick the box, not the price alone"
+      />
 
       <H3>When It Can Be Considered Worth It</H3>
       <P>

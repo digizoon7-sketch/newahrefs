@@ -24,6 +24,33 @@ function H4({ children }: { children: ReactNode }) {
 const AC =
   "font-bold text-blue-700 underline decoration-blue-400/60 underline-offset-2 hover:text-blue-800";
 
+function ArticleFigure({
+  src,
+  alt,
+  caption,
+  priority,
+}: {
+  src: string;
+  alt: string;
+  caption: string;
+  priority?: boolean;
+}) {
+  return (
+    <figure className="not-prose my-6 overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/80 shadow-sm">
+      <img
+        src={src}
+        alt={alt}
+        className="mx-auto h-auto w-full max-h-[min(70vh,640px)] object-contain bg-white"
+        loading={priority ? "eager" : "lazy"}
+        decoding="async"
+      />
+      <figcaption className="border-t border-slate-200 bg-white px-4 py-3 text-sm font-bold leading-snug text-[#1A284D]">
+        {caption}
+      </figcaption>
+    </figure>
+  );
+}
+
 /** Full long-form guide for `/ahrefs-group-buy-guide` (outline + body from content brief). */
 export function AhrefsGroupBuyGuideArticle() {
   return (
@@ -74,7 +101,20 @@ export function AhrefsGroupBuyGuideArticle() {
         access. That helps readers build realistic expectations from the start.
       </P>
 
+      <ArticleFigure
+        priority
+        src="/images/ahrefs-group-buy-guide/01-guide-roadmap.png"
+        alt="Project roadmap Gantt chart across about 16 months, with three phases and sequential tasks from early 2025 into 2026, ending in a milestone—illustrates how this guide and a real rollout can progress in stages"
+        caption="Full guide roadmap / chapters: phased timeline from setup-style work through ongoing use"
+      />
+
       <H2>How Shared Access Usually Works</H2>
+
+      <ArticleFigure
+        src="/images/ahrefs-group-buy-guide/02-topic-hub-trust-risk.png"
+        alt="Conceptual model diagram linking online trust, return policy attractiveness, perceived risk, satisfaction with purchasing experience, and a moderating factor—useful metaphor for how trust, policy, and risk shape satisfaction with shared tool access"
+        caption="Topic hub: pricing, trust, and risks branches — how trust, policy, and perceived risk connect to your experience"
+      />
 
       <H3>Shared Accounts and Access Systems</H3>
       <P>
@@ -121,6 +161,12 @@ export function AhrefsGroupBuyGuideArticle() {
         , they are often not just asking whether Ahrefs is included. They are really trying to understand what level of
         access they will receive in day to day use and whether that level is enough for their actual tasks.
       </P>
+
+      <ArticleFigure
+        src="/images/ahrefs-group-buy-guide/03-setup-daily-use.png"
+        alt="Illustration of a person walking with a laptop, surrounded by floating dashboard windows showing a timeline, data tables, and analytics charts—represents moving from setup into everyday SEO tool use"
+        caption="Setup → daily use timeline: dashboards, timelines, and analytics once you are in a working rhythm"
+      />
 
       <H3>Login Methods and Access Limits</H3>
       <P>
@@ -343,6 +389,12 @@ export function AhrefsGroupBuyGuideArticle() {
 
       <H2>Limitations and Risks Users Should Know</H2>
 
+      <ArticleFigure
+        src="/images/ahrefs-group-buy-guide/04-risks-mitigations.png"
+        alt="Circular risk management infographic with five stages: risk identification, qualitative risk analysis, quantitative risk analysis, risk response planning, and risk monitoring and control"
+        caption="Risks + mitigations: identify → analyze → plan responses → keep monitoring (ongoing cycle, not one-time)"
+      />
+
       <H3>Restricted Features and Usage Caps</H3>
       <P>
         One of the most common limitations in shared-access services is restricted functionality. Even when a provider
@@ -545,6 +597,12 @@ export function AhrefsGroupBuyGuideArticle() {
       </P>
 
       <H2>Final Thoughts on Ahrefs Group Buy</H2>
+
+      <ArticleFigure
+        src="/images/ahrefs-group-buy-guide/05-key-takeaways.png"
+        alt="Clipboard illustration titled Key Takeaways with a short bulleted checklist placeholder summarizing main conclusions from the guide"
+        caption="Key takeaways checklist card — capture the main conclusions before you choose a provider or plan"
+      />
 
       <H3>Who This Option May Appeal To</H3>
       <P>

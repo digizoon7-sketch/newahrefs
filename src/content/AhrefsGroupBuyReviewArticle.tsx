@@ -20,6 +20,33 @@ function H3({ children }: { children: ReactNode }) {
 const AC =
   "font-bold text-blue-700 underline decoration-blue-400/60 underline-offset-2 hover:text-blue-800";
 
+function ArticleFigure({
+  src,
+  alt,
+  caption,
+  priority,
+}: {
+  src: string;
+  alt: string;
+  caption: string;
+  priority?: boolean;
+}) {
+  return (
+    <figure className="not-prose my-6 overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/80 shadow-sm">
+      <img
+        src={src}
+        alt={alt}
+        className="mx-auto h-auto w-full max-h-[min(70vh,640px)] object-contain bg-white"
+        loading={priority ? "eager" : "lazy"}
+        decoding="async"
+      />
+      <figcaption className="border-t border-slate-200 bg-white px-4 py-3 text-sm font-bold leading-snug text-[#1A284D]">
+        {caption}
+      </figcaption>
+    </figure>
+  );
+}
+
 export function AhrefsGroupBuyReviewArticle() {
   return (
     <div className="content-article space-y-1 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
@@ -86,6 +113,13 @@ export function AhrefsGroupBuyReviewArticle() {
         frustrating to depend on. By covering both sides properly, the review helps readers move beyond the low price alone
         and think more carefully about whether this shared-access option actually fits their needs.
       </P>
+
+      <ArticleFigure
+        priority
+        src="/images/ahrefs-group-buy-review/01-neutral-review-clipboard.png"
+        alt="Illustration of hands holding a clipboard checklist with some items checked and others empty, surrounded by a lightbulb, magnifying glass, folders, and mail—generic neutral review and evaluation theme without brand-specific ratings"
+        caption='Neutral review layout: checklist-style evaluation—criteria, research, and notes (not a scored star rating)'
+      />
 
       <H2>How Shared Access Performs in Real Use</H2>
 
@@ -263,6 +297,12 @@ export function AhrefsGroupBuyReviewArticle() {
         from users who want simple, occasional, and budget friendly access rather than full daily SEO support.
       </P>
 
+      <ArticleFigure
+        src="/images/ahrefs-group-buy-review/02-pros-vs-cons.png"
+        alt="Open spiral notebook with Pros on the left page and Cons on the right, plus green plus and red minus icons and a pencil—balanced two-column layout for advantages and drawbacks"
+        caption="Pros column vs cons column: weigh savings and access against limits and friction side by side"
+      />
+
       <H2>Cons of Shared Access</H2>
 
       <H3>Limited Features and Restrictions</H3>
@@ -304,6 +344,12 @@ export function AhrefsGroupBuyReviewArticle() {
         quickly it will be resolved. That lack of control affects the overall usefulness of the service and makes stability one
         of the biggest practical concerns.
       </P>
+
+      <ArticleFigure
+        src="/images/ahrefs-group-buy-review/03-support-uptime.png"
+        alt="Stock-style photo of a network operations center team at workstations with a large display wall showing charts and prominent on-screen text such as 99.99% uptime and system health stable—metaphor for enterprise-grade monitoring, not a claim about any group-buy provider"
+        caption="Support & uptime metaphor: how serious operations teams picture reliability (contrast with variable shared-access reality)"
+      />
 
       <H3>Privacy and Security Concerns</H3>
       <P>
@@ -406,6 +452,12 @@ export function AhrefsGroupBuyReviewArticle() {
         access price are much more likely to feel dissatisfied. This difference in expectations explains why some reviews
         describe the service as acceptable for basic use while others describe it as frustrating or unreliable.
       </P>
+
+      <ArticleFigure
+        src="/images/ahrefs-group-buy-review/04-expectation-vs-reality.png"
+        alt="Bar chart and trend line where the path splits: one arrow labeled Expectation rises steeply while another labeled Reality levels off, with two figures inspecting the chart through a magnifying glass"
+        caption="Realistic expectations: marketing-style hope vs what shared access often feels like day to day"
+      />
 
       <H3>Short Term vs Long Term Experience</H3>
       <P>

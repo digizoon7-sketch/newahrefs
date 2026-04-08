@@ -117,7 +117,7 @@ function ToolLogo({ name }: { name: string }) {
   return (
     <img
       src={src}
-      alt=""
+      alt={`${name} logo`}
       className="h-10 w-10"
       loading="lazy"
       decoding="async"
@@ -241,7 +241,7 @@ function TopHero() {
                     >
                       <img
                         src={`/avatars/${id}.svg`}
-                        alt=""
+                        alt={`Illustrative customer avatar ${id} for AhrefsGroupBuy social proof`}
                         referrerPolicy="no-referrer"
                       />
                     </div>
@@ -1044,7 +1044,7 @@ function AhrefsBarFeatures() {
                       key={id}
                       src={`/avatars/${id}.svg`}
                       className="h-10 w-10 rounded-full border-2 border-blue-600"
-                      alt=""
+                      alt={`Illustrative SEO user avatar ${id} next to Joined by thousands of SEOs message`}
                       referrerPolicy="no-referrer"
                     />
                   ))}
@@ -1228,7 +1228,12 @@ function TrustpilotReviews() {
                 ))}
               </div>
               <div className="mb-3 flex items-center gap-2">
-                <img src={r.avatar} alt="" className="h-8 w-8 rounded-full object-cover" referrerPolicy="no-referrer" />
+                <img
+                  src={r.avatar}
+                  alt={`${r.name}, verified reviewer profile photo`}
+                  className="h-8 w-8 rounded-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
                 <span className="text-xs font-bold text-gray-800">{r.name}</span>
                 <CheckCircle2 className="h-3 w-3 text-gray-400" />
               </div>

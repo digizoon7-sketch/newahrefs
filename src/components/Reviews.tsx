@@ -73,7 +73,7 @@ export function Reviews() {
                 <div className="h-10 w-10 shrink-0 overflow-hidden rounded-md border border-border bg-background">
                   <img
                     src={review.avatar}
-                    alt={review.name}
+                    alt={`${review.name}, ${review.role} — customer review profile photo`}
                     className="h-full w-full object-cover"
                     referrerPolicy="no-referrer"
                   />

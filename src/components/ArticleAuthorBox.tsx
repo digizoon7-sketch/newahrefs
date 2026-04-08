@@ -123,7 +123,7 @@ export function ArticleAuthorBox({ author, datePublished, dateModified }: Articl
           {a.image ? (
             <img
               src={a.image}
-              alt={a.name}
+              alt={`${a.name}${a.jobTitle ? `, ${a.jobTitle}` : ""}, author photo for AhrefsGroupBuy`}
               width={88}
               height={88}
               className="h-[5.5rem] w-[5.5rem] rounded-full border border-slate-200 object-cover shadow-sm"

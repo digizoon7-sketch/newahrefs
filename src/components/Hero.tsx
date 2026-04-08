@@ -46,7 +46,7 @@ export function Hero() {
                   >
                     <img
                       src={`https://i.pravatar.cc/100?img=${i + 10}`}
-                      alt=""
+                      alt={`Decorative profile photo ${i} in trusted by SEO professionals strip`}
                       className="h-full w-full object-cover"
                     />
                   </div>

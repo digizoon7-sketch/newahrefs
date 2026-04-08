@@ -20,6 +20,33 @@ function H3({ children }: { children: ReactNode }) {
 const AC =
   "font-bold text-blue-700 underline decoration-blue-400/60 underline-offset-2 hover:text-blue-800";
 
+function ArticleFigure({
+  src,
+  alt,
+  caption,
+  priority,
+}: {
+  src: string;
+  alt: string;
+  caption: string;
+  priority?: boolean;
+}) {
+  return (
+    <figure className="not-prose my-6 overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/80 shadow-sm">
+      <img
+        src={src}
+        alt={alt}
+        className="mx-auto h-auto w-full max-h-[min(70vh,640px)] object-contain bg-white"
+        loading={priority ? "eager" : "lazy"}
+        decoding="async"
+      />
+      <figcaption className="border-t border-slate-200 bg-white px-4 py-3 text-sm font-bold leading-snug text-[#1A284D]">
+        {caption}
+      </figcaption>
+    </figure>
+  );
+}
+
 export function ProsAndConsOfAhrefsGroupBuyArticle() {
   return (
     <div className="content-article space-y-1 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
@@ -88,6 +115,13 @@ export function ProsAndConsOfAhrefsGroupBuyArticle() {
         of SEO work the reader actually plans to do.
       </P>
 
+      <ArticleFigure
+        priority
+        src="/images/pros-and-cons-of-ahrefs-group-buy/01-t-chart-pros-cons.png"
+        alt="Blank worksheet-style T-chart titled T-Chart with Pros and Cons column headers and empty lined areas, on a yellow dotted background—template for listing advantages and drawbacks side by side"
+        caption="T-chart pros / cons: same topic, two columns—what you gain vs what you give up"
+      />
+
       <H2>Pros of Shared Access</H2>
 
       <H3>Lower Cost Than Official Plans</H3>
@@ -113,6 +147,12 @@ export function ProsAndConsOfAhrefsGroupBuyArticle() {
         with limitations and a different usage experience from official ownership. But for users whose first priority is
         affordability, this remains the most attractive part of a shared-access plan and the main reason interest in it continues.
       </P>
+
+      <ArticleFigure
+        src="/images/pros-and-cons-of-ahrefs-group-buy/02-price-upside-feature-caps.png"
+        alt="Graphic titled Understanding Upside-Downside Ratio with upward Boost Profits and downward Costs arrows and Business Focus label—metaphor for trading spend for upside while accepting where savings cap capability"
+        caption="Price upside vs feature caps: lower spend is the upside; ceilings on depth, speed, and freedom are the downside"
+      />
 
       <H3>Access to Premium SEO Data</H3>
       <P>
@@ -201,6 +241,13 @@ export function ProsAndConsOfAhrefsGroupBuyArticle() {
       </P>
 
       <H3>Stability and Downtime Problems</H3>
+
+      <ArticleFigure
+        src="/images/pros-and-cons-of-ahrefs-group-buy/04-stability-volatility.png"
+        alt="Illustration of a person with trekking poles walking along jagged red and green line graphs like sharp peaks and valleys, pole handles marked with dollar signs—generic metaphor for volatile uptime and balancing cost against unstable access"
+        caption="Stability up / down (generic): access and performance can swing; cheap entry does not smooth the line"
+      />
+
       <P>
         Stability is another common problem with shared-access services because access usually depends on a third party
         system rather than on direct user control. Even if the service works well at one moment, that does not guarantee it
@@ -220,6 +267,13 @@ export function ProsAndConsOfAhrefsGroupBuyArticle() {
       </P>
 
       <H3>Privacy and Security Concerns</H3>
+
+      <ArticleFigure
+        src="/images/pros-and-cons-of-ahrefs-group-buy/03-privacy-metaphor.png"
+        alt="Flat illustration with large word Privacy and diverse people using devices among locks, shields, clouds, and data motifs on a blue background—metaphor for control and visibility in shared, provider-managed access"
+        caption="Privacy metaphor: shared environments mix your research habits with a third-party setup and unclear boundaries"
+      />
+
       <P>
         Privacy and security concerns are also important drawbacks because group-buy access usually works through a provider
         controlled environment. Users are often not working through a direct personal account, which means they may not
@@ -259,6 +313,12 @@ export function ProsAndConsOfAhrefsGroupBuyArticle() {
       </P>
 
       <H2>How the Pros and Cons Affect Different Users</H2>
+
+      <ArticleFigure
+        src="/images/pros-and-cons-of-ahrefs-group-buy/05-win-lose-personas.png"
+        alt="Two red 3D cubes on a white background: one cube shows faces labeled Win and the other shows faces labeled Lose—metaphor for different outcomes depending on user persona and workload"
+        caption="Who wins / loses (personas): light-budget learners often gain more upside; reliability-heavy roles absorb more downside"
+      />
 
       <H3>Freelancers With Small Budgets</H3>
       <P>

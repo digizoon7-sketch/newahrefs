@@ -20,12 +20,45 @@ function H3({ children }: { children: ReactNode }) {
 const AC =
   "font-bold text-blue-700 underline decoration-blue-400/60 underline-offset-2 hover:text-blue-800";
 
+function ArticleFigure({
+  src,
+  alt,
+  caption,
+  priority,
+}: {
+  src: string;
+  alt: string;
+  caption: string;
+  priority?: boolean;
+}) {
+  return (
+    <figure className="not-prose my-6 overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/80 shadow-sm">
+      <img
+        src={src}
+        alt={alt}
+        className="mx-auto h-auto w-full max-h-[min(70vh,640px)] object-contain bg-white"
+        loading={priority ? "eager" : "lazy"}
+        decoding="async"
+      />
+      <figcaption className="border-t border-slate-200 bg-white px-4 py-3 text-sm font-bold leading-snug text-[#1A284D]">
+        {caption}
+      </figcaption>
+    </figure>
+  );
+}
+
 export function WhatIsAhrefsGroupBuyArticle() {
   return (
     <div className="content-article space-y-1 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
       <H2>Introduction to Shared Ahrefs Access</H2>
 
       <H3>What the Term Means</H3>
+      <ArticleFigure
+        priority
+        src="/images/what-is-ahrefs-group-buy/01-shared-access.png"
+        alt="Illustration for Ahrefs group buy: one central system labeled Central Computer OS connected to three clients, showing shared access to a single SEO tool"
+        caption="Shared access: multiple users → one tool (concept)"
+      />
       <P>
         Ahrefs group buy is a shared access model where multiple users use one paid SEO tool setup through a third party
         provider instead of buying their own official subscription. The idea is simple on the surface. A provider
@@ -160,6 +193,11 @@ export function WhatIsAhrefsGroupBuyArticle() {
       </P>
 
       <H3>Difference Between Shared Access and Official Subscription</H3>
+      <ArticleFigure
+        src="/images/what-is-ahrefs-group-buy/04-official-vs-shared.png"
+        alt="Comparison-style graphic with two sides discussing terms; intended to contrast official tool subscription with shared group-buy access—replace image if on-image wording does not match your Ahrefs access topic"
+        caption="Official subscription vs shared access (split-style graphic — replace asset if the visible text is off-topic)"
+      />
       <P>
         The difference between shared access and an official Ahrefs subscription is mainly about control, consistency, and
         working freedom. With an official plan, the user has direct access under their own account with defined features,
@@ -276,6 +314,11 @@ export function WhatIsAhrefsGroupBuyArticle() {
       <H2>What Users Usually Get (Features and Access)</H2>
 
       <H3>Keyword Research Access</H3>
+      <ArticleFigure
+        src="/images/what-is-ahrefs-group-buy/02-flow-dashboard.png"
+        alt="Example SEO keyword research screen: keyword difficulty, monthly search volume, traffic potential, and global volume breakdown for a sample query after logging into a premium tool"
+        caption="Flow: pay → provider access → use the tool (example: keyword research in the dashboard)"
+      />
       <P>
         One of the main things users expect from a shared-access service is access to keyword research features. This usually
         includes checking search terms, exploring related keyword ideas, and reviewing basic keyword difficulty or traffic
@@ -321,6 +364,11 @@ export function WhatIsAhrefsGroupBuyArticle() {
       </P>
 
       <H3>Limited Reports and Restricted Features</H3>
+      <ArticleFigure
+        src="/images/what-is-ahrefs-group-buy/03-audit-features.png"
+        alt="Icon-style graphic for site and SEO audits: document labeled Audit with magnifying glass and money symbol, representing audit reports and limited feature access in shared plans"
+        caption="Feature buckets: research (above), backlinks/competitors (in this section’s text), audits and reports (icon-style)"
+      />
       <P>
         A common reality of shared access is that users often receive access to some features, but not the full range of
         functions they might expect from an official subscription. Reports may be partially available, advanced actions

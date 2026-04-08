@@ -61,9 +61,9 @@ export function ToolDetail({ title, subtitle, description, features, image, reve
             className={cn("relative", reversed && "lg:order-1")}
           >
             <div className="relative aspect-video overflow-hidden rounded-sm border border-border bg-text shadow-2xl group">
-              <img 
-                src={image} 
-                alt={title} 
+              <img
+                src={image}
+                alt={`Feature illustration: ${title} — Ahrefs group buy marketing visual`}
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                 referrerPolicy="no-referrer"
               />

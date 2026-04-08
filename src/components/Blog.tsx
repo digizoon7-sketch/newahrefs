@@ -61,9 +61,9 @@ export function Blog() {
               className="group cursor-pointer"
             >
               <div className="bg-surface border border-border overflow-hidden mb-8 relative aspect-[4/3]">
-                <img 
-                  src={post.image} 
-                  alt={post.title} 
+                <img
+                  src={post.image}
+                  alt={`Featured image for blog post: ${post.title}`}
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                   referrerPolicy="no-referrer"
                 />

@@ -21,6 +21,33 @@ const AC =
   "font-bold text-blue-700 underline decoration-blue-400/60 underline-offset-2 hover:text-blue-800";
 const PILLAR = "/ahrefs-group-buy-guide";
 
+function ArticleFigure({
+  src,
+  alt,
+  caption,
+  priority,
+}: {
+  src: string;
+  alt: string;
+  caption: string;
+  priority?: boolean;
+}) {
+  return (
+    <figure className="not-prose my-6 overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/80 shadow-sm">
+      <img
+        src={src}
+        alt={alt}
+        className="mx-auto h-auto w-full max-h-[min(70vh,640px)] object-contain bg-white"
+        loading={priority ? "eager" : "lazy"}
+        decoding="async"
+      />
+      <figcaption className="border-t border-slate-200 bg-white px-4 py-3 text-sm font-bold leading-snug text-[#1A284D]">
+        {caption}
+      </figcaption>
+    </figure>
+  );
+}
+
 /** Full article for `/ahrefs-group-buy-for-beginners`. Exactly two in-body anchors → pillar; no footer CTA. */
 export function AhrefsGroupBuyForBeginnersArticle() {
   return (
@@ -87,7 +114,20 @@ export function AhrefsGroupBuyForBeginnersArticle() {
         carefully for themselves.
       </P>
 
+      <ArticleFigure
+        priority
+        src="/images/ahrefs-group-buy-for-beginners/01-start-here.png"
+        alt="Yellow comic-style starburst with bold black text reading Start Here and a megaphone icon, on white—friendly entry point graphic for new readers"
+        caption="Start here: read the intro, then follow the page in order before you pick a provider"
+      />
+
       <H2>Why Beginners Consider Shared Access</H2>
+
+      <ArticleFigure
+        src="/images/ahrefs-group-buy-for-beginners/02-step-123-path.png"
+        alt="3D circular puzzle with three curved pieces labeled Step 1, Step 2, and Step 3 around a center checkmark; a faint stock-image watermark may appear across the middle"
+        caption="Step 1–2–3 beginner path: learn what shared access is, why it appeals, then what to expect before you pay"
+      />
 
       <H3>Budget Limits in the Early Learning Stage</H3>
       <P>
@@ -342,6 +382,12 @@ export function AhrefsGroupBuyForBeginnersArticle() {
 
       <H2>Limits Beginners Should Know About</H2>
 
+      <ArticleFigure
+        src="/images/ahrefs-group-buy-for-beginners/03-common-beginner-mistakes.png"
+        alt="Torn white card on red background: left half reads Common in black and right half reads Mistakes in red, split down the middle—caution graphic for typical pitfalls"
+        caption="Common beginner mistakes: expecting official-style freedom, overlooking stability and caps, and choosing on price alone"
+      />
+
       <H3>Restricted Features and Partial Access</H3>
       <P>
         One of the first limits beginners should understand is that group-buy access usually does not provide full feature
@@ -511,6 +557,12 @@ export function AhrefsGroupBuyForBeginnersArticle() {
       </P>
 
       <H2>Final Thoughts on Ahrefs Group Buy for Beginners</H2>
+
+      <ArticleFigure
+        src="/images/ahrefs-group-buy-for-beginners/04-next-steps-roadmap.png"
+        alt="Flat illustration of two people with briefcases walking a winding teal path over rising bar columns toward an upward arrow, with clouds—metaphor for gradual progress after the basics"
+        caption="Next steps roadmap: keep expectations realistic, then level up learning—or plan a move to official access when workload grows"
+      />
 
       <H3>What New Users Should Remember</H3>
       <P>
