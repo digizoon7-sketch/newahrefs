@@ -4,16 +4,24 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { springSnappy } from "@/lib/motion";
-import { SITE_CONFIG, PAGES } from "@/config/site";
+import { SITE_CONFIG } from "@/config/site";
 import { Logo } from "./Logo";
+
+const HOME_SECTIONS = [
+  { label: "Pricing", hash: "pricing" },
+  { label: "Tools", hash: "tools" },
+  { label: "Comparison", hash: "comparison" },
+  { label: "Limitations", hash: "limitations" },
+  { label: "Reviews", hash: "reviews" },
+  { label: "FAQ", hash: "faq" },
+] as const;
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -24,7 +32,6 @@ export function Navbar() {
 
   useEffect(() => {
     setIsOpen(false);
-    setActiveDropdown(null);
   }, [pathname]);
 
   /** Reference: transparent over navy hero on home only; inner pages always use the light bar. */
@@ -63,57 +70,17 @@ export function Navbar() {
             >
               Home
             </Link>
-            {SITE_CONFIG.clusters.map((cluster) => (
-              <div
-                key={cluster.name}
-                className="relative group"
-                onMouseEnter={() => setActiveDropdown(cluster.name)}
-                onMouseLeave={() => setActiveDropdown(null)}
+            {HOME_SECTIONS.map((s) => (
+              <Link
+                key={s.hash}
+                to={`/#${s.hash}`}
+                className={cn(
+                  "py-2 text-xs font-bold uppercase tracking-widest transition-colors hover:text-blue-600",
+                  lightNav ? "text-gray-600" : "text-blue-100"
+                )}
               >
-                <Link 
-                  to={`/${cluster.pillar}`}
-                  className={cn(
-                    "flex items-center gap-1 py-2 text-xs font-bold uppercase tracking-widest transition-colors hover:text-blue-600",
-                    lightNav ? "text-gray-600" : "text-blue-100"
-                  )}
-                >
-                  {cluster.name}
-                  <ChevronDown className="w-3 h-3" />
-                </Link>
-                <AnimatePresence>
-                  {activeDropdown === cluster.name && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 8, scale: 0.98 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 6, scale: 0.98 }}
-                      transition={springSnappy}
-                      className={cn(
-                        "absolute top-full left-0 w-64 rounded-xl border p-4 shadow-2xl",
-                        lightNav
-                          ? "border-slate-200 bg-white"
-                          : "border-white/10 bg-[#15203d]/98 backdrop-blur-md"
-                      )}
-                    >
-                      <div className="space-y-1">
-                        {cluster.supporting.map((slug) => (
-                          <Link
-                            key={slug}
-                            to={`/${slug}`}
-                            className={cn(
-                              "block rounded-lg p-2 text-xs transition-colors",
-                              lightNav
-                                ? "text-slate-600 hover:bg-slate-50 hover:text-blue-600"
-                                : "text-white/70 hover:bg-white/5 hover:text-white"
-                            )}
-                          >
-                            {PAGES[slug].title}
-                          </Link>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+                {s.label}
+              </Link>
             ))}
             <motion.div whileHover={{ scale: 1.04, y: -1 }} whileTap={{ scale: 0.97 }} transition={springSnappy}>
               <Link
@@ -167,21 +134,23 @@ export function Navbar() {
                 >
                   Home
                 </Link>
-                {SITE_CONFIG.clusters.map((cluster) => (
-                  <div key={cluster.name} className="space-y-4">
-                    <p className="text-[10px] font-black uppercase tracking-widest text-blue-300">{cluster.name}</p>
-                    <Link to={`/${cluster.pillar}`} className="block text-xl font-bold text-white">
-                      {PAGES[cluster.pillar].title}
-                    </Link>
-                    <div className="grid grid-cols-1 gap-2 border-l border-white/15 pl-4">
-                      {cluster.supporting.slice(0, 3).map((slug) => (
-                        <Link key={slug} to={`/${slug}`} className="text-sm text-blue-100/80 hover:text-white">
-                          {PAGES[slug].title}
-                        </Link>
-                      ))}
-                    </div>
+                <div className="space-y-4">
+                  <p className="text-[10px] font-black uppercase tracking-widest text-blue-300">
+                    {SITE_CONFIG.name}
+                  </p>
+                  <div className="grid grid-cols-1 gap-2 border-l border-white/15 pl-4">
+                    {HOME_SECTIONS.map((s) => (
+                      <Link
+                        key={s.hash}
+                        to={`/#${s.hash}`}
+                        onClick={() => setIsOpen(false)}
+                        className="text-sm text-blue-100/80 hover:text-white"
+                      >
+                        {s.label}
+                      </Link>
+                    ))}
                   </div>
-                ))}
+                </div>
               </div>
 
               <div className="border-t border-white/10 pt-8">
